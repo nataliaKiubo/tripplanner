@@ -11,7 +11,7 @@
     <% end %>
 
     <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :avatar, required: true, autofocus: true %>
+    <%= f.input :avatar, as: :file, required: true, autofocus: true %>
 
 
     <%= f.input :password,
