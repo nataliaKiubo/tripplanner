@@ -3,7 +3,6 @@ class StopsController < ApplicationController
 
   # GET /trips or /trips.json
   def index
-    @stops = Stop.all
   end
 
   # GET /trips/1 or /trips/1.json
@@ -20,6 +19,7 @@ class StopsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
+    @stop = Stop.find(params[:id])
     authorize @stop
   end
 

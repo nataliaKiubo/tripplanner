@@ -1,42 +1,43 @@
-<div id="<%= dom_id trip %>">
+<div>
   <p>
     <strong>Name:</strong>
-    <%= trip.name %>
+    <%= @trip.name %>
   </p>
 
   <p>
     <strong>Description:</strong>
-    <%= trip.description %>
+    <%= @trip.description %>
   </p>
 
-  <p>
+  <%# <p>
     <strong>Categories:</strong>
-    <%= trip.categories %>
-  </p>
+    <%= @trip.categories %>
+  <%# </p> %>
 
   <p>
     <strong>Amount of travellers:</strong>
-    <%= trip.amount_of_travellers %>
+    <%= @trip.amount_of_travellers %>
   </p>
 
   <p>
     <strong>Amount of children:</strong>
-    <%= trip.amount_of_children %>
+    <%= @trip.amount_of_children %>
   </p>
 
   <p>
     <strong>Pets:</strong>
-    <%= trip.pets %>
+    <%= @trip.pets %>
   </p>
 
-  <p>
+  <%# <p>
     <strong>Original trip:</strong>
-    <%= trip.original_trip_id %>
-  </p>
+    <%= @trip.original_trip_id %>
+  <%# </p> %>
 
-  <p>
+  <%# <p>
     <strong>User:</strong>
-    <%= trip.user_id %>
-  </p>
+    <%= @trip.user_id %>
+  <%# </p> %>
+
 
 </div>

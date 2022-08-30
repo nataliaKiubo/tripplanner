@@ -1,72 +1,9 @@
 <p style="color: green"><%= notice %></p>
+<h1>Your Trip</h1>
+<%= render 'trip' %>
 
-<%# <%= render "trip" %>
-
-
-<div>
-  <p>
-    <strong>Name:</strong>
-    <%= @trip.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @trip.description %>
-  </p>
-
-  <p>
-    <strong>Categories:</strong>
-    <%= @trip.categories %>
-  </p>
-
-  <p>
-    <strong>Amount of travellers:</strong>
-    <%= @trip.amount_of_travellers %>
-  </p>
-
-  <p>
-    <strong>Amount of children:</strong>
-    <%= @trip.amount_of_children %>
-  </p>
-
-  <p>
-    <strong>Pets:</strong>
-    <%= @trip.pets %>
-  </p>
-
-  <p>
-    <strong>Original trip:</strong>
-    <%= @trip.original_trip_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @trip.user_id %>
-  </p>
-
-  <% @trip.stops.each do |stop| %>
-  <div>
-    <p>
-      <strong>Address:</strong>
-      <%= stop.address %>
-    </p>
-
-    <p>
-      <strong>Date:</strong>
-      <%= stop.date %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= stop.description %>
-    </p>
-  </div>
-<% end %>
-
-
-
-
-
+<h4>Your Stops</h4>
+<%= render 'stops/stop' %>
 
 <div>
   <%= link_to "Edit this trip", edit_trip_path(@trip) %> |

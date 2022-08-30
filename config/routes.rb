@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trips do
-    resources :stops, only: [:update, :create, :destroy, :new]
+    resources :stops
   end
   devise_for :users
   root to: "pages#home"

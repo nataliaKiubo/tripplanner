@@ -8,11 +8,11 @@ class StopPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    true
   end
 
   def edit?
-    record.user == user
+    true
   end
 
   def create?
@@ -20,7 +20,7 @@ class StopPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    true
   end
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
