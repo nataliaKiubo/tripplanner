@@ -8,22 +8,26 @@ class StopsController < ApplicationController
 
   # GET /trips/1 or /trips/1.json
   def show
+    authorize @stop
   end
 
   # GET /trips/new
   def new
     @trip = Trip.find(params[:trip_id])
     @stop = Stop.new
+    authorize @stop
   end
 
   # GET /trips/1/edit
   def edit
+    authorize @stop
   end
 
   # POST /trips or /trips.json
   def create
     @stop = Stop.new(stop_params)
     @stop.trip = @trip
+    authorize @stop
 
     respond_to do |format|
       if @stop.save
@@ -38,6 +42,7 @@ class StopsController < ApplicationController
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
+    authorize @stop
     respond_to do |format|
       if @stop.update(trip_params)
         format.html { redirect_to trip_url(@trip), notice: "Your stop was successfully updated." }
@@ -51,6 +56,7 @@ class StopsController < ApplicationController
 
   # DELETE /trips/1 or /trips/1.json
   def destroy
+    authorize @stop
     @stop.destroy
 
     respond_to do |format|

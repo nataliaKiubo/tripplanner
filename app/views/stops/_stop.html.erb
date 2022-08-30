@@ -1,17 +1,18 @@
-<div>
-  <p>
-    <strong>Address:</strong>
-    <%= stop.address %>
-  </p>
+<% @trip.stops.each do |stop| %>
+  <div>
+    <p>
+      <strong>Address:</strong>
+      <%= stop.address %>
+    </p>
 
-  <p>
-    <strong>Date:</strong>
-    <%= stop.date %>
-  </p>
+    <p>
+      <strong>Date:</strong>
+      <%= stop.date %>
+    </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= stop.description %>
-  </p>
-
-</div>
+    <p>
+      <strong>Description:</strong>
+      <%= stop.description %>
+    </p>
+  </div>
+<% end %>
