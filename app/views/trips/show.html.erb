@@ -1,16 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @trip %>
+  <%= render @trip %>
 
 
-<div>
-  <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-  <%= link_to "Back to trips", trips_path %>
+  <div>
+    <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
+    <%= link_to "Back to trips", trips_path %>
 
-  <%= button_to "Destroy this trip", @trip, method: :delete %>
+    <%= button_to "Destroy this trip", @trip, method: :delete %>
+  </div>
+
+  <div style="width: 80%; height: 350px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 </div>
-
-<div style="width: 80%; height: 350px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
