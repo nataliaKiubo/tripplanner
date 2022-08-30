@@ -10,6 +10,7 @@ class TripsController < ApplicationController
   # GET /trips/1 or /trips/1.json
   def show
     authorize @trip
+    @stops = @trip.stops.all
     # The `geocoded` scope filters only flats with coordinates
     @markers = @trip.stops.geocoded.map do |stop|
       {

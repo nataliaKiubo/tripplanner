@@ -1,80 +1,18 @@
-<div class="container">
-  <p style="color: green"><%= notice %></p>
+<p style="color: green"><%= notice %></p>
+<h1>Your Trip</h1>
+<%= render 'trip' %>
 
-<%# <%= render "trip" %>
-
+<h4>Your Stops</h4>
+<%= render 'stops/stop' %>
 
 <div>
-  <p>
-    <strong>Name:</strong>
-    <%= @trip.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @trip.description %>
-  </p>
-
-  <p>
-    <strong>Categories:</strong>
-    <%= @trip.categories %>
-  </p>
-
-  <p>
-    <strong>Amount of travellers:</strong>
-    <%= @trip.amount_of_travellers %>
-  </p>
-
-  <p>
-    <strong>Amount of children:</strong>
-    <%= @trip.amount_of_children %>
-  </p>
-
-  <p>
-    <strong>Pets:</strong>
-    <%= @trip.pets %>
-  </p>
-
-  <p>
-    <strong>Original trip:</strong>
-    <%= @trip.original_trip_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @trip.user_id %>
-  </p>
-
-  <% @trip.stops.each do |stop| %>
-  <div>
-    <p>
-      <strong>Address:</strong>
-      <%= stop.address %>
-    </p>
-
-    <p>
-      <strong>Date:</strong>
-      <%= stop.date %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= stop.description %>
-    </p>
-  </div>
-<% end %>
-
-
-  <div>
-    <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-    <%= link_to "Back to trips", trips_path %>
-
-    <%= button_to "Destroy this trip", @trip, method: :delete %>
-  </div>
+  <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
+  <%= link_to "Back to trips", trips_path %>
+  <%= button_to "Destroy this trip", @trip, method: :delete %>
 
   <div style="width: 80%; height: 350px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
+    
 </div>
