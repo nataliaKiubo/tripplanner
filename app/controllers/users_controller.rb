@@ -2,9 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
 
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "Your profile was successfully updated." }
@@ -17,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    authorize @user
   end
 
   private
