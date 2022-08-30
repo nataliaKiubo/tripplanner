@@ -12,12 +12,12 @@ class TripsController < ApplicationController
     authorize @trip
     @stops = @trip.stops.all
     # The `geocoded` scope filters only flats with coordinates
-    # @markers = @trip.stops.geocoded.map do |stop|
-    #   {
-    #     lat: stop.latitude,
-    #     lng: stop.longitude
-    #   }
-    # end
+    @markers = @trip.stops.geocoded.map do |stop|
+      {
+        lat: stop.latitude,
+        lng: stop.longitude
+      }
+    end
   end
 
   # GET /trips/new
