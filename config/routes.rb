@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
 # so we can have: domain.com/users/:id/favorites
-  # resources :users do
-  #   resources :favorites, only: [:index]
-  # end
+  resources :users do
+    resources :favorites, only: [:index]
+  end
 
   resources :favorites, only: [:create, :destroy]
 
