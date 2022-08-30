@@ -82,3 +82,4 @@ end
 
 
 gem "cloudinary"
+gem "pundit"

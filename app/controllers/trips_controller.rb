@@ -3,32 +3,38 @@ class TripsController < ApplicationController
 
   # GET /trips or /trips.json
   def index
+    @trips = policy_scope(Trip)
     @trips = Trip.all
   end
 
   # GET /trips/1 or /trips/1.json
   def show
+    authorize @trip
     # The `geocoded` scope filters only flats with coordinates
-    @markers = @trip.stops.geocoded.map do |stop|
-      {
-        lat: stop.latitude,
-        lng: stop.longitude
-      }
-    end
+    # @markers = @trip.stops.geocoded.map do |stop|
+    #   {
+    #     lat: stop.latitude,
+    #     lng: stop.longitude
+    #   }
+    # end
   end
 
   # GET /trips/new
   def new
     @trip = Trip.new
+    authorize @trip
   end
 
   # GET /trips/1/edit
   def edit
+    authorize @trip
   end
 
   # POST /trips or /trips.json
   def create
     @trip = Trip.new(trip_params)
+    @trip.user = current_user
+    authorize @trip
 
     respond_to do |format|
       if @trip.save
@@ -43,6 +49,7 @@ class TripsController < ApplicationController
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
+    authorize @trip
     respond_to do |format|
       if @trip.update(trip_params)
         format.html { redirect_to trip_url(@trip), notice: "Trip was successfully updated." }
@@ -56,6 +63,7 @@ class TripsController < ApplicationController
 
   # DELETE /trips/1 or /trips/1.json
   def destroy
+    authorize @trip
     @trip.destroy
 
     respond_to do |format|
