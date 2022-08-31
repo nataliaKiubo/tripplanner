@@ -7,6 +7,10 @@ class TripPolicy < ApplicationPolicy
     true
   end
 
+  def copy?
+    true
+  end
+
   def update?
     record.user == user
   end

@@ -9,11 +9,10 @@
 <div>
   <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
   <%= link_to "Back to trips", trips_path %>
+  <%= link_to "Copy this trip",  copy_trip_path %>
   <%= button_to "Destroy this trip", @trip, method: :delete %>
 
-
-
-  <div style="width: 80%; height: 350px;"
+<div style="width: 80%; height: 350px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
