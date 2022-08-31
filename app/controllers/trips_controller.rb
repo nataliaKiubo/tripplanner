@@ -1,3 +1,5 @@
+require "open-uri"
+
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy copy]
 
@@ -34,11 +36,19 @@ class TripsController < ApplicationController
     authorize @trip
   end
 
+
   # POST /trips or /trips.json
   def create
+    # custom logic to set up main_image
+
     @trip = Trip.new(trip_params)
     @trip.user = current_user
     authorize @trip
+
+    if !@trip.main_image.attached? && @trip.original_image_url
+      puts "attaching image"
+      @trip.main_image.attach(io: URI.open(@trip.original_image_url), filename: "")
+    end
 
     respond_to do |format|
       if @trip.save
@@ -81,7 +91,7 @@ class TripsController < ApplicationController
     authorize @trip
 
     @tripcopy = Trip.new(name: @trip.name, description: @trip.description, categories: @trip.categories, amount_of_travellers: @trip.amount_of_travellers, amount_of_children: @trip.amount_of_children, pets: @trip.pets, original_trip_id: @trip.id)
-
+    @tripcopy.main_image.attach(@trip.main_image.blob)
     @trip.stops.each do |stop|
       @tripcopy.stops << Stop.new(address: stop.address)
     end
@@ -95,7 +105,7 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name, :description, :categories, :amount_of_travellers, :amount_of_children, :pets, :original_trip_id, :user_id, :main_image, gallery_images: [],
+      params.require(:trip).permit(:name, :description, :categories, :amount_of_travellers, :amount_of_children, :pets, :original_trip_id, :user_id, :original_image_url, :main_image, gallery_images: [],
         stops_attributes: [:id, :date, :name, :address, :description])
     end
 end
