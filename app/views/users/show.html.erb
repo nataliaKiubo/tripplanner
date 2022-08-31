@@ -3,4 +3,10 @@
 
   <%= @user.name %>
   <%= @user.avatar.key %>
+
+  <% @trips.each do |trip| %>
+  <p>Name: <%= trip.name %></p>
+  <p>Description: <%= trip.description %></p>
+  <p>Travellers: <%= trip.amount_of_travellers %></p>
+  <% end %>
 </div>
