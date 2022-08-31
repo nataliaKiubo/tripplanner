@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[ show edit update destroy ]
+  before_action :set_trip, only: %i[ show edit update destroy copy]
 
   # GET /trips or /trips.json
   def index
@@ -70,6 +70,17 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trips_url, notice: "Trip was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+
+  def copy
+    authorize @trip
+
+    @tripcopy = Trip.new(name: @trip.name, description: @trip.description, categories: @trip.categories, amount_of_travellers: @trip.amount_of_travellers, amount_of_children: @trip.amount_of_children, pets: @trip.pets, original_trip_id: @trip.id)
+
+    @trip.stops.each do |stop|
+      @tripcopy.stops << Stop.new(address: stop.address)
     end
   end
 

@@ -1,0 +1,23 @@
+<h1>test</h1>
+
+
+<%= simple_form_for(@tripcopy) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :categories %>
+    <%= f.input :amount_of_travellers %>
+    <%= f.input :amount_of_children %>
+    <%= f.input :pets %>
+    <%= f.input :original_trip_id %>
+    <%= f.input :main_image, as: :file %>
+    <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
