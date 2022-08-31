@@ -13,6 +13,10 @@
     <%= f.input :amount_of_children %>
     <%= f.input :pets %>
     <%= f.input :original_trip_id %>
+    <% if @tripcopy.main_image %>
+      <%= cl_image_tag @tripcopy.main_image.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <%= f.input :original_image_url, :as => :hidden, input_html: { value: @tripcopy.main_image.blob.url } %>
     <%= f.input :main_image, as: :file %>
     <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
   </div>
@@ -26,8 +30,6 @@
       %>
       <%= stop.input :description %>
     </div>
-  <% end %>
-
       <%= stop.check_box :_destroy %>
     </div>
   <% end %>
