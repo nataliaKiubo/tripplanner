@@ -17,6 +17,17 @@
     <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
   </div>
 
+  <%= f.simple_fields_for :stops do |stop| %>
+    <div class="form-inputs">
+      <%= stop.input :date, html5: true %>
+      <%= stop.input :address,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+      %>
+      <%= stop.input :description %>
+      <%= stop.check_box :_destroy %>
+    </div>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
