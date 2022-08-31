@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :trips do
+    member do
+      get :copy
+    end
     resources :stops
   end
   devise_for :users
