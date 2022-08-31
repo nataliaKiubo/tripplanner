@@ -2,6 +2,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :stops, dependent: :destroy
   accepts_nested_attributes_for :stops, allow_destroy: true
+  attr_accessor :original_image_url
 
   has_many :ratings
   has_many :favorites
