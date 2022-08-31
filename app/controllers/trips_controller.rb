@@ -1,5 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy copy]
+  before_action :authenticate_user!, only: :toggle_favorite
+
 
   # GET /trips or /trips.json
   def index
@@ -87,15 +89,20 @@ class TripsController < ApplicationController
     end
   end
 
+  def toggle_favorite
+    @trip = Trip.find_by(id: params[:id])
+    current_user.favorited?(@trip) ? current_user.unfavorite(@trip) : current_user.favorite(@trip)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_trip
-      @trip = Trip.find(params[:id])
-    end
+  def set_trip
+    @trip = Trip.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def trip_params
-      params.require(:trip).permit(:name, :description, :categories, :amount_of_travellers, :amount_of_children, :pets, :original_trip_id, :user_id, :main_image, gallery_images: [],
-        stops_attributes: [:id, :date, :name, :address, :description])
-    end
+  def trip_params
+    params.require(:trip).permit(:name, :description, :categories, :amount_of_travellers, :amount_of_children, :pets, :original_trip_id, :user_id, :main_image, gallery_images: [],
+      stops_attributes: [:id, :date, :name, :address, :description, :_destroy])
+  end
 end

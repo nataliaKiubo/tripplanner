@@ -1,0 +1,13 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <h1>My favorites</h1>
+
+  <div>
+    <% @favorites.each do |favorite| %>
+      <%# <%= render 'favorite'%>
+      <%= favorite.trip_id %>
+    <% end %>
+  </div>
+
+</div>
