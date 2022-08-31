@@ -17,7 +17,7 @@
     <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
   </div>
 
-    <%= f.simple_fields_for :stops do |stop| %>
+  <%= f.simple_fields_for :stops do |stop| %>
     <div class="form-inputs">
       <%= stop.input :date, html5: true %>
       <%= stop.input :address,
@@ -28,6 +28,9 @@
     </div>
   <% end %>
 
+      <%= stop.check_box :_destroy %>
+    </div>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
