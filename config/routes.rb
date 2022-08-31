@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   resources :trips do
     member do
+      post 'toggle_favorite', to: "trips#toggle_favorite"
       get :copy
     end
     resources :stops
   end
   devise_for :users
   root to: "pages#home"
+
 
 # so we can have: domain.com/users/:id/favorites
   resources :users do

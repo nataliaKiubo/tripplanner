@@ -83,3 +83,4 @@ end
 
 gem "cloudinary"
 gem "pundit"
+gem 'acts_as_favoritor'
