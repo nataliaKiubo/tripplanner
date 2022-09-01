@@ -8,7 +8,17 @@ class TripsController < ApplicationController
   # GET /trips or /trips.json
   def index
     @trips = policy_scope(Trip)
-    @trips = Trip.all
+    if params[:query].present?
+      sql_query = <<~SQL
+      trips.name @@ :query
+      OR trips.description @@ :query
+      OR stops.address @@ :query
+      OR stops.description @@ :query
+      SQL
+      @trips = Trip.joins(:stops).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @trips = Trip.all
+    end
   end
 
   # GET /trips/1 or /trips/1.json
