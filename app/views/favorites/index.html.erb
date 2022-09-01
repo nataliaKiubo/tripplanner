@@ -10,15 +10,7 @@
     <p>DESCRIPTION:<%= trip.description %></p>
     <%= link_to "more", trip_path(trip) %>
   <% end %>
-<p>User:<%= @user %> mit ID: <%= @user.id %></p>
-<P>
-<% @favorites.each do |faves| %>
-<%= faves.favoritor_id %>
-<% end %>
-</P>
-<P>CURRENT USER:
-<%= current_user.id %>
-</P>
+
 
 
 </div>
