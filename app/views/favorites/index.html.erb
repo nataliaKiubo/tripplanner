@@ -4,10 +4,13 @@
   <h1>My favorites</h1>
 
   <div>
-    <% @favorites.each do |favorite| %>
-      <%# <%= render 'favorite'%>
-      <%= favorite.trip_id %>
-    <% end %>
-  </div>
+
+  <% @favorite_trips.flatten.each do |trip| %>
+    <p>NAME: <%= trip.name %></p>
+    <p>DESCRIPTION:<%= trip.description %></p>
+    <%= link_to "more", trip_path(trip) %>
+  <% end %>
+
+
 
 </div>
