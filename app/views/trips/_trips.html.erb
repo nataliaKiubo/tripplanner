@@ -1,18 +1,47 @@
 <% @trips.each do |trip| %>
-  <div class="container-sm mb-5">
+  <div class="cards col-lg-3 col-6">
+    <a href="" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <p>
+        <%= trip.name %>
+      </p>
+      <p>
+        <%= trip.description %>
+      </p>
+      <div class="button-card">
+        <%= button_to "Show this trip", trip_path(trip.id) %>
+      </div>
+    </a>
+  </div>
+<% end %>
+
+<%# <div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Lunch
+  </div>
+</div> %>
+
+
+
+<%# Estrutura original que ja estava na pagina
+<% @trips.each do |trip| %>
+  <%# <div class="container-sm mb-5">
     <p>
       <strong>Name:</strong>
       <%= trip.name %>
-    </p>
+    <%# </p> %>
 
-    <p>
+    <%# <p>
       <strong>Description:</strong>
       <%= trip.description %>
-    </p>
+    <%# </p>  %>
 
-    <p>
-      <%= link_to "Show this trip", trip_path(trip.id) %>
+    <%# <p> %>
+      <%# <%= link_to "Show this trip", trip_path(trip.id) %>
 
-    </p>
-  </div>
-<% end %>
+    <%# </p> %>
+  <%# </div> %>
+<%# <% end %>
