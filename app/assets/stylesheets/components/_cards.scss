@@ -1,26 +1,63 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  height: 160px;
-  margin-bottom: 30px;
+  height: 300px;
+  margin-bottom: 20px;
+  font-size: 12px;
 }
 
-.card-category {
+// .card-category {
+
+// }
+
+.card-image {
+display: flex;
+  width: 100px;
+  justify-content: center;
+}
+.card-name {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+// .card-description {
+//   text-align: left;
+// }
+
+a {
+  text-decoration: none;
+}
+
+p {
+  text-decoration: none;
+  margin: auto;
+
+}
+
+.card-envolve {
+  box-shadow: 0 2px 2px -1px grey;
+  padding: 5px;
   border-radius: 5px;
+  height: 120px;
+  width: 50%;
+  background-color: red($color: #000000);
 }
 
+
+// Devices Configurations
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

@@ -1,0 +1,43 @@
+
+<%= link_to trip_path(trip) do %>
+  <div class="card-category">
+    <% if  trip.main_image.key.present? %>
+      <%= cl_image_tag trip.main_image.key, crop: :fill, class: "card-image" %>
+    <% else %>
+      <img class="card-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
+    <% end %>
+    </div>
+    <div class="card-name">
+      <%= trip.name %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+<%# Estrutura original que ja estava na pagina
+<% @trips.each do |trip| %>
+  <%# <div class="container-sm mb-5">
+    <p>
+      <strong>Name:</strong>
+      <%= trip.name %>
+    <%# </p> %>
+
+    <%# <p>
+      <strong>Description:</strong>
+      <%= trip.description %>
+    <%# </p>  %>
+
+    <%# <p> %>
+      <%# <%= link_to "Show this trip", trip_path(trip.id) %>
+
+    <%# </p> %>
+  <%# </div> %>
+<%# <% end %>

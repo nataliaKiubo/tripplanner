@@ -1,0 +1,47 @@
+.carousel-title {
+  position: absolute;
+  bottom: 10px;
+  left: 34px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+p.notice {
+  margin: 0;
+
+}
+
+p.cities-title {
+  box-shadow: 0px 2px 6px #8080808c;
+  padding: 5px 10px;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  background-color: #ffffff;
+}
+
+.cities-image {
+  max-width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.col-4.cities {
+  padding: 0;
+  border-radius: 10px;
+  width: 31.333333%;
+}
+
+.explore-cities {
+  gap: 3%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+a.btn.btn-primary {
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
