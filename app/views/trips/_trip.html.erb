@@ -1,25 +1,25 @@
   <div class="container-sm mb-5">
     <p>
       <strong>Name:</strong>
-      <%= @trip.name %>
+      <%= trip.name %>
     </p>
 
     <p>
       <strong>Description:</strong>
-      <%= @trip.description %>
+      <%= trip.description %>
     </p>
 
     <p>
       <strong>Categorie:</strong>
-      <%= @trip.categories %>
+      <%= trip.categories %>
     </p>
 
     <p>
       <strong>Amount of travelers:</strong>
-      <%= @trip.amount_of_travellers %>
+      <%= trip.amount_of_travellers %>
     </p>
-    <% if @trip.main_image %>
-      <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
+    <% if trip.main_image %>
+      <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
     <% end %>
 
 

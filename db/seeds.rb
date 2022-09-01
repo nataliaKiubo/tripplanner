@@ -17,7 +17,7 @@ i = 0
 
 10.times do
   trip = "trip#{i}"
-  trip = Trip.new(user_id: 6, name: Faker::Fantasy::Tolkien.location, description: Faker::Fantasy::Tolkien.poem, categories: "#{category}", amount_of_travellers: "#{travellers}", amount_of_children: "#{children}", pets: "#{pets}")
+  trip = Trip.new(user_id: 1, name: Faker::Fantasy::Tolkien.location, description: Faker::Fantasy::Tolkien.poem, categories: "#{category}", amount_of_travellers: "#{travellers}", amount_of_children: "#{children}", pets: "#{pets}")
   trip.main_image.attach(io: URI.open("https://source.unsplash.com/random/500x300/?city"), filename: "")
   trip.save!
   i += 1
