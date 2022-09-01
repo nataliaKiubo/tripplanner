@@ -8,7 +8,8 @@ class TripsController < ApplicationController
   # GET /trips or /trips.json
   def index
     @trips = policy_scope(Trip)
-    @trips = Trip.all
+
+    # @trips = Trip.all
   end
 
   # GET /trips/1 or /trips/1.json
