@@ -19,27 +19,4 @@
       <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
     <% end %>
 
-    h3 class='d-flex justify-content-start'></h3>
-        <%= render 'trip' %>
-        <%= render 'stops/stop' %>
-        <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
-
-        <div>
-          <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-          <%= link_to "Back to trips", trips_path %>
-          <%= link_to "Copy this trip",  copy_trip_path %>
-          <%= button_to "Destroy this trip", @trip, method: :delete %>
-          <% if @user.favorited?(@trip) %>
-            <%= button_to "unlike", toggle_favorite_trip_path(@trip), method: :post %>
-          <% else %>
-            <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
-          <% end %>
-        </div>
-
-        <div style="width: 80%; height: 350px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-        </div>
-
   </div>
