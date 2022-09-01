@@ -9,6 +9,8 @@
     <p>NAME: <%= trip.name %></p>
     <p>DESCRIPTION:<%= trip.description %></p>
     <%= link_to "more", trip_path(trip) %>
+    <%= button_to "unfavorite", toggle_favorite_trip_path(trip), method: :post %>
+
   <% end %>
 
 

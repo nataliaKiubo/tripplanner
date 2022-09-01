@@ -22,6 +22,8 @@ class TripsController < ApplicationController
         lng: stop.longitude
       }
     end
+    @trip = Trip.find(params[:id])
+    @user = current_user
   end
 
   # GET /trips/new
@@ -100,7 +102,7 @@ class TripsController < ApplicationController
   end
 
   def toggle_favorite
-    @trip = Trip.find_by(id: params[:id])
+    @trip = Trip.find(params[:id])
     current_user.favorited?(@trip) ? current_user.unfavorite(@trip) : current_user.favorite(@trip)
   end
 
