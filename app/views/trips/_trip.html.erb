@@ -1,29 +1,45 @@
   <div class="container-sm mb-5">
-    <p>
-      <strong>Name:</strong>
-      <%= @trip.name %>
-    </p>
+    <h3 class='d-flex justify-content-start'>
+      <strong><%= @trip.name %></strong>
+    </h3>
 
     <p>
-      <strong>Description:</strong>
-      <%= @trip.description %>
+    Created by <a href="<%= user_path(@trip.user) %>"><%= "#{@trip.user.name}" %></a>
     </p>
 
-    <p>
-      <strong>Categorie:</strong>
-      <%= @trip.categories %>
-    </p>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Notes</div>
+      <div class="card-body">
+        <%# <h5 class="card-title">Light card title</h5> %>
+        <p class="card-text"><%= @trip.description %></p>
+      </div>
+    </div>
 
-    <p>
-      <strong>Amount of travelers:</strong>
-      <%= @trip.amount_of_travellers %>
-    </p>
     <% if @trip.main_image %>
-      <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
+      <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
     <% end %>
 
+    h3 class='d-flex justify-content-start'></h3>
+        <%= render 'trip' %>
+        <%= render 'stops/stop' %>
+        <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
 
+        <div>
+          <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
+          <%= link_to "Back to trips", trips_path %>
+          <%= link_to "Copy this trip",  copy_trip_path %>
+          <%= button_to "Destroy this trip", @trip, method: :delete %>
+          <% if @user.favorited?(@trip) %>
+            <%= button_to "unlike", toggle_favorite_trip_path(@trip), method: :post %>
+          <% else %>
+            <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
+          <% end %>
+        </div>
 
-
+        <div style="width: 80%; height: 350px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        </div>
 
   </div>

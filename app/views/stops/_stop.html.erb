@@ -1,18 +1,19 @@
-<% @stops.each do |stop| %>
-  <div class="container-sm mb-5">
-    <p>
-      <strong>Address:</strong>
-      <%= stop.address %>
-    </p>
+<div class="container-sm mb-5">
+  <h5 class='d-flex justify-content-start'>
+        <strong>Itinerary</strong>
+  </h5>
 
-    <p>
-      <strong>Date:</strong>
-      <%= stop.date %>
-    </p>
+  <% @stops.each do |stop| %>
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header"><%= stop.date %></div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> <%= stop.address %></li>
+          <li class="list-group-item"> <%= stop.description %></li>
+          </ul>
+        </div>
 
-    <p>
-      <strong>Description:</strong>
-      <%= stop.description %>
-    </p>
-  </div>
+      </div>
   <% end %>
+
+</div>

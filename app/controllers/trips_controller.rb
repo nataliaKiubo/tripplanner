@@ -104,6 +104,7 @@ class TripsController < ApplicationController
   def toggle_favorite
     @trip = Trip.find(params[:id])
     current_user.favorited?(@trip) ? current_user.unfavorite(@trip) : current_user.favorite(@trip)
+    # head :ok
   end
 
   private
