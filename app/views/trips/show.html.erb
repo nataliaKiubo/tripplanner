@@ -11,7 +11,13 @@
   <%= link_to "Back to trips", trips_path %>
   <%= link_to "Copy this trip",  copy_trip_path %>
   <%= button_to "Destroy this trip", @trip, method: :delete %>
-  <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
+  <% if @user.favorited?(@trip) %> %>
+    <%= button_to "unlike", toggle_favorite_trip_path(@trip), method: :post %>
+  <% else %>
+    <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
+  <% end %>
+
+
 
 <div style="width: 80%; height: 350px;"
     data-controller="map"
