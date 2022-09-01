@@ -1,29 +1,22 @@
   <div class="container-sm mb-5">
-    <p>
-      <strong>Name:</strong>
-      <%= trip.name %>
-    </p>
+    <h3 class='d-flex justify-content-start'>
+      <strong><%= @trip.name %></strong>
+    </h3>
 
     <p>
-      <strong>Description:</strong>
-      <%= trip.description %>
+    Created by <a href="<%= user_path(@trip.user) %>"><%= "#{@trip.user.name}" %></a>
     </p>
 
-    <p>
-      <strong>Categorie:</strong>
-      <%= trip.categories %>
-    </p>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Notes</div>
+      <div class="card-body">
+        <%# <h5 class="card-title">Light card title</h5> %>
+        <p class="card-text"><%= @trip.description %></p>
+      </div>
+    </div>
 
-    <p>
-      <strong>Amount of travelers:</strong>
-      <%= trip.amount_of_travellers %>
-    </p>
-    <% if trip.main_image %>
+    <% if @trip.main_image %>
       <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-
-
-
-
 
   </div>

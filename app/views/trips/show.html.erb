@@ -1,26 +1,8 @@
+<div class="container-sm mb-5">
 <p style="color: green"><%= notice %></p>
-<h1>This Trip</h1>
-<%= render 'trip', trip: @trip %>
 
-<h4>Your Stops</h4>
-<%= render 'stops/stop' %>
-<%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
-
-<div>
-  <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-  <%= link_to "Back to trips", trips_path %>
-  <%= link_to "Copy this trip",  copy_trip_path %>
-  <%= button_to "Destroy this trip", @trip, method: :delete %>
-  <% if @user.favorited?(@trip) %> %>
-    <%= button_to "unlike", toggle_favorite_trip_path(@trip), method: :post %>
-  <% else %>
-    <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
-  <% end %>
-
-
-
-<div style="width: 80%; height: 350px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <h3 class='d-flex justify-content-start'></h3>
+        <%= render 'trip' %>
+        <%= render 'stops/stop' %>
+        <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
 </div>
