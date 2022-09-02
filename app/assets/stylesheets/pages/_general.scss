@@ -21,3 +21,23 @@
 .searchform input.btn.btn-primary {
   border-radius: 0 10px 10px 0;
 }
+
+.name-heart {
+  align-items: flex-end;
+    margin-top: -28px;
+    margin-bottom: 14px;
+
+      button {
+        background: transparent;
+        border: none;
+        font-size: 29px;
+    }
+
+}
+
+.trips-links {
+display: flex;
+justify-content: space-between;
+margin: 0 auto;
+font-size: 24px;
+}

@@ -23,34 +23,4 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-
-    <div class="col-md-12 mb-4">
-
-      <button type="button" class="btn btn-elegant"><i class="far fa-user pr-2" aria-hidden="true"></i>User</button>
-      <button type="button" class="btn btn-unique"><i class="fas fa-wifi pr-2" aria-hidden="true"></i>Wifi</button>
-      <button type="button" class="btn btn-pink"><i class="fas fa-plane pr-2" aria-hidden="true"></i>Plane</button>
-      <button type="button" class="btn btn-purple"><i class="fas fa-heart pr-2" aria-hidden="true"></i>Heart</button>
-    </div>
-  </div>
-
-
-
-
-
-
-    <div class="col col-12">
-        <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-        <%= link_to "Back to trips", trips_path %>
-        <%= link_to "Copy this trip",  copy_trip_path %>
-        <%= button_to "Destroy this trip", @trip, method: :delete %>
-        <% if user_signed_in? && @user.favorited?(@trip) %>
-              <%= button_to "unlike", toggle_favorite_trip_path(@trip), method: :post %>
-            <% elsif user_signed_in? && @user.favorited?(@trip) == false %>
-                <%= button_to "like", toggle_favorite_trip_path(@trip), method: :post %>
-              <% else %>
-                <%= button_to "like", user_session_path %>
-            <% end %>
-    </div>
-    </div>
-  </div>
 </div>

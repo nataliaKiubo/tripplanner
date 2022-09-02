@@ -3,12 +3,17 @@
     <h3 class='d-flex justify-content-start'>
       <strong><%= @trip.name %></strong>
     </h3>
-
-    <p>
-    Created by <a href="<%= user_path(@trip.user) %>"><%= "#{@trip.user.name}" %></a>
+  <div class="d-flex justify-content-between name-heart">
+    <p>Created by <a href="<%= user_path(@trip.user) %>"><%= "#{@trip.user.name}" %></a>
     </p>
-
-    <br>
+    <% if user_signed_in? && @user.favorited?(@trip) %>
+      <%= button_to "♥", toggle_favorite_trip_path(@trip), method: :post %>
+    <% elsif user_signed_in? && @user.favorited?(@trip) == false %>
+        <%= button_to "♡", toggle_favorite_trip_path(@trip), method: :post %>
+      <% else %>
+        <%= button_to "♡", user_session_path %>
+    <% end %>
+    </div>
 
     <div class="col-12 cities">
       <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662040576/charles-postiaux-Q6UehpkBSnQ-unsplash_svxgej.jpg", alt: "London", class: "cities-image" %>
