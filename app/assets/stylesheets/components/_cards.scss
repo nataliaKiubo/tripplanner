@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  height: 300px;
   margin-bottom: 20px;
   font-size: 12px;
 }
@@ -37,7 +36,7 @@ p {
   box-shadow: 0 2px 2px -1px grey;
   padding: 5px;
   border-radius: 5px;
-  height: 140px;
+  height: auto;
 }
 
 

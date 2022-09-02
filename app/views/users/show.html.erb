@@ -1,12 +1,14 @@
 <div class="container">
-  <h1>Hello!</h1>
+  <h1>Hello, <%= @user.name %>! </h1>
 
-  <%= @user.name %>
+
   <%= @user.avatar.key %>
 
-  <% @trips.each do |trip| %>
-  <p>Name: <%= trip.name %></p>
-  <p>Description: <%= trip.description %></p>
-  <p>Travellers: <%= trip.amount_of_travellers %></p>
-  <% end %>
+  <div id="trips" class="cards">
+    <% @trips.each do |trip| %>
+      <div class="card-envolve">
+        <%= render 'trips/trip_card', trip: trip %>
+      </div>
+    <% end %>
+  </div>
 </div>
