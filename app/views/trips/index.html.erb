@@ -3,6 +3,8 @@
 
   <h1>Trips</h1>
 
+  <div class="container"><%= render "trips/searchform" %></div>
+
   <div id="trips" class="cards">
     <% @trips.each do |trip| %>
       <div class="card-envolve">
