@@ -12,10 +12,13 @@ class TripsController < ApplicationController
       sql_query = <<~SQL
       trips.name ILIKE :query
       OR trips.description ILIKE :query
-
+      OR stops.address ILIKE :query
+      OR stops.description ILIKE :query
       SQL
-      #@trips = Trip.joins(:stops).where(sql_query, query: "%#{params[:query]}%")
-      @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
+      @trips = Trip.eager_load(:stops).where(sql_query, query: "%#{params[:query]}%")
+      # @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
+      #@trips = Trip.where(sql_query, query: "%#{params[:query]}%")
+
     else
       @trips = Trip.all
     end

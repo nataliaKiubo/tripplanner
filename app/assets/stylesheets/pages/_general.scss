@@ -5,10 +5,19 @@
 
   .form-control {
     border: none;
+    max-width: 60% !important;
   }
 }
 
 .container {
   margin: 50px auto;
   max-width: 88%;
+}
+
+.searchform input#query {
+  border-radius: 10px 0 0 10px;
+}
+
+.searchform input.btn.btn-primary {
+  border-radius: 0 10px 10px 0;
 }
