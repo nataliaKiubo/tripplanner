@@ -12,10 +12,11 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-  <div id="trips">
-    <%# <% @trips.each do |trip| %>
-      <%= render 'trips'%>
-    <%# <% end %>
+  <div id="trips" class="cards">
+    <% @trips.each do |trip| %>
+      <div class="card-envolve">
+        <%= render 'trip_card', trip: trip %>
+      </div>
+    <% end %>
   </div>
-
 </div>
