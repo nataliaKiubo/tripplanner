@@ -10,8 +10,7 @@
     <%= f.input :amount_of_travellers %>
     <%= f.input :amount_of_children %>
     <%= f.input :pets %>
-    <%= f.input :original_trip_id %>
-
+    <%= f.input :original_trip_id, :as => :hidden %>
     <%= f.input :main_image, as: :file %>
     <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
   </div>
@@ -29,6 +28,6 @@
     </div>
   <% end %>
   <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, class: "btn btn-primary" %>
     </div>
 <% end %>
