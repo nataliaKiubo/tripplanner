@@ -44,7 +44,7 @@
 <h2>Featured Guides from Users</h2>
 <p>Check out what other travellers are doing:</p>
 <% @trips.first(3).each do |trip| %>
-<%= cl_image_tag trip.main_image.key, crop: :fill, class: "card-image" %>
+<%# <%= cl_image_tag trip.main_image.key, crop: :fill, class: "card-image" %> %>
 <h4><%= trip.name  %></h4>
 <p><%= trip.user.name %></p>
 <% end %>
