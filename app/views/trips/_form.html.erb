@@ -6,16 +6,18 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :categories %>
+    <%= f.input :categories, :collection => %w[Culture Shopping Food Nature Leisure]%>
     <%= f.input :amount_of_travellers %>
     <%= f.input :amount_of_children %>
     <%= f.input :pets %>
-    <%= f.input :original_trip_id, :as => :hidden %>
+    <%# <%= f.input :original_trip_id, :as => :hidden %>
     <%= f.input :main_image, as: :file %>
-    <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
+    <%# <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
   </div>
 
+  <% i = 1 %>
   <%= f.simple_fields_for :stops do |stop| %>
+  <h4>Stop <%= i %> </h4>
     <div class="form-inputs">
       <%= stop.input :date, html5: true %>
       <%= stop.input :address,
@@ -23,10 +25,16 @@
     wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
       %>
       <%= stop.input :description %>
+      <% if @trip.new_record? %>
+      <% else %>
       <%= stop.check_box :_destroy %>
       <%= stop.label :delete %>
+      <% end %>
+      <% i += 1 %>
+
     </div>
   <% end %>
+
   <div class="form-actions">
       <%= f.button :submit, class: "btn btn-primary" %>
     </div>

@@ -3,10 +3,14 @@
         <strong>Itinerary</strong>
   </h5>
 
+  <% i = 1 %>
   <% @stops.keys.sort.each do |day| %>
-
       <div class="card bg-light mb-3 col-12">
+      <% if user_signed_in?%>
         <div class="card-header"><%= l day %></div>
+      <% else %>
+      <div class="card-header">Day <%= i %>: <i lang="it"><%= l day %></i></div>
+      <% end %>
           <% @stops[day].each do |stop| %>
           <div class="card-body">
             <ul class="list-group list-group-flush">
@@ -15,6 +19,7 @@
             </ul>
           </div>
           <% end %>
+        <% i += 1 %>
       </div>
   <% end %>
 
