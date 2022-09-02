@@ -16,8 +16,8 @@
     </div>
 
     <div class="col-12 cities">
-      <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662040576/charles-postiaux-Q6UehpkBSnQ-unsplash_svxgej.jpg", alt: "London", class: "cities-image" %>
-      <p class= "cities-title"><%= @trip.description %></p>
+      <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "cities-image" %>
+      <p class= "cities-title p-3"><%= @trip.description %></p>
     </div>
 
     <% if @trip.main_image %>

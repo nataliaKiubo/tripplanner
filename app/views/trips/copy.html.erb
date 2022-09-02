@@ -1,39 +1,38 @@
-<h1>test</h1>
+<div class="container">
+  <h1>Copy this trip</h1>
+  <%= simple_form_for(@tripcopy) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-
-<%= simple_form_for(@tripcopy) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :categories %>
-    <%= f.input :amount_of_travellers %>
-    <%= f.input :amount_of_children %>
-    <%= f.input :pets %>
-    <%= f.input :original_trip_id %>
-    <% if @tripcopy.main_image %>
-      <%= cl_image_tag @tripcopy.main_image.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <%= f.input :original_image_url, :as => :hidden, input_html: { value: @tripcopy.main_image.blob.url } %>
-    <%= f.input :main_image, as: :file %>
-    <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
-  </div>
-
-  <%= f.simple_fields_for :stops do |stop| %>
     <div class="form-inputs">
-      <%= stop.input :date, html5: true %>
-      <%= stop.input :address,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-      <%= stop.input :description %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :categories %>
+      <%= f.input :amount_of_travellers %>
+      <%= f.input :amount_of_children %>
+      <%= f.input :pets %>
+      <%= f.input :original_trip_id, :as => :hidden %>
+      <% if @tripcopy.main_image %>
+        <%= cl_image_tag @tripcopy.main_image.key, class: "cities-image", crop: :fill %>
+      <% end %>
+      <%= f.input :original_image_url, :as => :hidden, input_html: { value: @tripcopy.main_image.blob.url } %>
+      <%= f.input :main_image, as: :file %>
+      <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
     </div>
-      <%= stop.check_box :_destroy %>
+
+    <%= f.simple_fields_for :stops do |stop| %>
+      <div class="form-inputs">
+        <%= stop.input :date, html5: true %>
+        <%= stop.input :address,
+        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+        %>
+        <%= stop.input :description %>
+      </div>
+        <%= stop.check_box :_destroy %>
+    <% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary" %>
     </div>
   <% end %>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>
