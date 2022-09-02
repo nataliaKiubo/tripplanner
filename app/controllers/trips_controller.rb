@@ -21,7 +21,8 @@ class TripsController < ApplicationController
     @markers = @trip.stops.geocoded.map do |stop|
       {
         lat: stop.latitude,
-        lng: stop.longitude
+        lng: stop.longitude,
+        info_window: render_to_string(partial: "stops/info_window", locals: { stop: stop })
       }
     end
     @trip = Trip.find(params[:id])
