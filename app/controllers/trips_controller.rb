@@ -103,6 +103,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trips_url, notice: "Trip was successfully destroyed." }
       format.json { head :no_content }
+      format.js { head :no_content }
     end
   end
 
