@@ -35,11 +35,18 @@ p.cities-title {
 .explore-cities {
   gap: 3%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 15px auto;
 }
 
 
 a.btn.btn-primary {
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn.btn-primary {
   color: #fff;
   font-size: 13px;
   text-transform: uppercase;
