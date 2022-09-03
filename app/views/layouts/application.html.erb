@@ -22,6 +22,44 @@
 
     <%= yield %>
 
+    <%# Navbar Fixed on Bottom %>
+    <% if user_signed_in? %>
+        <nav class="navbar fixed-bottom bg-light">
+        <div id= "icon-navbar-bottom" class="container-fluid">
 
+          <%# Home  %>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <a href="<%= root_path %>"><i class="fa-solid fa-house-chimney"></i></a>
+            </li>
+          <% end %>
+
+          <%# User %>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a href="<%= user_path(current_user) %>"><i class="fa-solid fa-user"></i></a>
+            </li>
+          <% end %>
+
+          <%# Favorites %>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a href="<%= user_favorites_path(current_user) %>"><i class="fa-solid fa-heart"></i></a>
+            </li>
+          <% end %>
+
+          <%# Add New Trip %>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a href="<%= new_trip_path %>"><i class="fa-solid fa-circle-plus"></i></a>
+            </li>
+          <% end %>
+        </div>
+      <% end %>
+    </nav>
   </body>
 </html>
+
+<% if user_signed_in? %>
+  <a href="<%= user_path(current_user) %>"><i class="far fa-user pr-2" aria-hidden="true"></i></a>
+  <% end %>
