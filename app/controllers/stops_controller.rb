@@ -7,7 +7,7 @@ class StopsController < ApplicationController
 
   # GET /trips/1 or /trips/1.json
   def show
-    authorize @stop
+    authorize @trip.stops
   end
 
   # GET /trips/new
@@ -42,9 +42,10 @@ class StopsController < ApplicationController
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
+    @stop = @trip.stops.find(params[:id])
     authorize @stop
     respond_to do |format|
-      if @stop.update(trip_params)
+      if @stop.update(stop_params)
         format.html { redirect_to trip_url(@trip), notice: "Your stop was successfully updated." }
         format.json { render :show, status: :ok, location: @stop }
       else
@@ -56,11 +57,12 @@ class StopsController < ApplicationController
 
   # DELETE /trips/1 or /trips/1.json
   def destroy
+    @stop = @trip.stops.find(params[:id])
     authorize @stop
     @stop.destroy
 
     respond_to do |format|
-      format.html { redirect_to trips_url, notice: "Your stop was successfully destroyed." }
+      format.html { redirect_to trip_path(@trip), notice: "Your stop was successfully destroyed." }
       format.json { head :no_content }
     end
   end

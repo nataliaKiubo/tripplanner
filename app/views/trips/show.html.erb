@@ -6,7 +6,7 @@
       <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
 <div class="trips-links container">
 <% if user_signed_in? %>
-  <a href="<%= user_path(current_user) %>"><i class="far fa-user pr-2" aria-hidden="true"></i></a>
+  <a href="<%= new_trip_stop_path(@trip) %>"><i class="fa-solid fa-plus" aria-hidden="true"></i></a>
   <% end %>
   <a href="<%= copy_trip_path %>"><i class="fa-regular fa-copy"></i></a>
   <a href="<%= edit_trip_path(@trip) %>"><i class="fa-regular fa-pen-to-square"></i></a>
