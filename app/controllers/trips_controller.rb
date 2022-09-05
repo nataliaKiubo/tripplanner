@@ -111,11 +111,14 @@ class TripsController < ApplicationController
   def copy
     authorize @trip
 
-    @tripcopy = Trip.new(name: @trip.name, description: @trip.description, categories: @trip.categories, amount_of_travellers: @trip.amount_of_travellers, amount_of_children: @trip.amount_of_children, pets: @trip.pets, original_trip_id: @trip.id)
+    @tripcopy = Trip.new(user: current_user, name: @trip.name, description: @trip.description, categories: @trip.categories, amount_of_travellers: @trip.amount_of_travellers, amount_of_children: @trip.amount_of_children, pets: @trip.pets, original_trip_id: @trip.id)
     @tripcopy.main_image.attach(@trip.main_image.blob)
     @trip.stops.each do |stop|
-      @tripcopy.stops << Stop.new(address: stop.address)
+      @tripcopy.stops << Stop.new(address: stop.address, description: stop.description)
     end
+    @tripcopy.original_trip = @trip
+    @tripcopy.save
+    redirect_to trip_path(@tripcopy)
   end
 
   def toggle_favorite

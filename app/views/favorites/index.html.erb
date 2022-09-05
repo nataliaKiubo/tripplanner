@@ -3,22 +3,23 @@
 
   <h1>My favorites</h1>
 
-  <div>
+  <div id="trips" class="cards">
+    <% @favorite_trips.flatten.each do |trip| %>
+      <div class="test">
+        <div class="container-heart">
+          <p>Created by <%= link_to trip.user.name, user_path(trip.user) %></p>
 
-  <% @favorite_trips.flatten.each do |trip| %>
-    <div>
-      <div class="container-heart">
-        <p>Created by <%= link_to trip.user.name, user_path(trip.user) %></p>
+          <%= button_to toggle_favorite_trip_path(trip), method: :post, class: "icon-heart"  do %>
+            <i class="fa-solid fa-heart"></i>
+          <% end %>
+        </div>
 
-        <%= button_to toggle_favorite_trip_path(trip), method: :post, class: "icon-heart"  do %>
-          <i class="fa-solid fa-heart"></i>
-        <% end %>
+        <div class="card-envolve">
+          <%= render 'trips/trip_card', trip: trip %>
+        </div>
       </div>
+    <% end %>
 
-      <div class="card-envolve">
-        <%= render 'trips/trip_card', trip: trip %>
-      </div>
-    </div>
-  <% end %>
+  </div>
 
 </div>
