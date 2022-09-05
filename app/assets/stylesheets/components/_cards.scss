@@ -41,6 +41,10 @@ p {
   height: auto;
 }
 
+.test {
+  grid-template-columns: 1fr 1fr;
+}
+
 
 // Devices Configurations
 // Smallest device
