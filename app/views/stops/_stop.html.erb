@@ -7,21 +7,31 @@
   <% @stops.keys.sort.each do |day| %>
       <div class="card bg-light mb-3 col-12">
       <% if user_signed_in?%>
-        <div class="card-header"><%= l day %></div>
+        <div class="card-header">Day <%= i %>: <i lang="it"><%= l day %></div>
       <% else %>
-      <div class="card-header">Day <%= i %>: <i lang="it"><%= l day %></i></div>
+      <div class="card-header">Day <%= i %></i></div>
       <% end %>
           <% @stops[day].each do |stop| %>
-          <div class="card-body">
+          <div class="stop-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> <%= stop.address %></li>
               <li class="list-group-item"> <%= stop.description %></li>
             </ul>
           </div>
+
+        <div class="stops-links container">
+          <a href="<%= edit_trip_stop_path(@trip, stop) %>"><i class="fa-regular fa-pen-to-square"></i></a>
+          <%= button_to trip_stop_path(@trip, stop), class: "delete_stop", method: :delete do %><i class="fa-regular fa-trash-can"></i>
+        <% end %>
+        </div>
           <% end %>
         <% i += 1 %>
       </div>
+
   <% end %>
+
+  <%# <div class="container stop">
+  <%= link_to "Add stop", new_trip_stop_path(@trip), class: "btn btn-primary" %>
 
     <div style="height: 350px; col-12"
           data-controller="map"
