@@ -117,8 +117,8 @@ class TripsController < ApplicationController
       @tripcopy.stops << Stop.new(address: stop.address, description: stop.description)
     end
     @tripcopy.original_trip = @trip
-    @tripcopy.save
-    redirect_to trip_path(@tripcopy)
+    # @tripcopy.save
+    # redirect_to trip_path(@tripcopy)
   end
 
   def toggle_favorite

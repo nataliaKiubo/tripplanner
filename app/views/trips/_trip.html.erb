@@ -30,17 +30,8 @@
       </div>
     </div>
 
-    <%# <% if @trip.main_image %>
-      <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
-    <%# <% end %>
-
   <div class="col-12 cities">
-    <%#= cl_image_tag @trip.main_image.key, crop: :fill, class: "cities-image" %>
+    <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "cities-image" %>
     <p class= "cities-title p-3"><%= @trip.description %></p>
   </div>
-
-  <% if @trip.main_image %>
-    <%# <%= cl_image_tag @trip.main_image.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-
 </div>
