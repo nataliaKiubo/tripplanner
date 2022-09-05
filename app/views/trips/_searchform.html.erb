@@ -1,8 +1,13 @@
-  <%= form_with url: trips_path, method: :get, class: "d-flex searchform" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: ""
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+  <%= form_with url: trips_path, method: :get, class: "searchform d-flex justify-content-center" do %>
+    <div class="row searchquery">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for a city"
+      %>
+
+    </div>
+    <div class="row categoryquery">
+    <%= submit_tag "Search", class: "btn btn-primary" %></div>
+
+  <% end %>

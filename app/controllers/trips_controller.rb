@@ -19,6 +19,10 @@ class TripsController < ApplicationController
       # @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
       #@trips = Trip.where(sql_query, query: "%#{params[:query]}%")
 
+      if params[:categories].present?
+        @trips = @trips.where(categories: params[:categories])
+
+      end
     else
       @trips = Trip.all
     end
