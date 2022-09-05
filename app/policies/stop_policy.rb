@@ -8,20 +8,21 @@ class StopPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.trip.user == user
   end
 
   def edit?
-    true
+    record.trip.user == user
   end
 
   def create?
-    true
+    record.trip.user == user
   end
 
   def destroy?
-    true
+    record.trip.user == user
   end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
