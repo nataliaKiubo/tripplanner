@@ -13,7 +13,7 @@ class Trip < ApplicationRecord
   attr_accessor :original_image_url
 
   validates :name, :main_image, :description, :amount_of_travellers, :amount_of_children, :categories, presence: true
-  validates :name, length: { in: 6..250 }, uniqueness: true
+  # validates :name, length: { in: 6..250 }, uniqueness: true
 
   has_many :ratings
   has_many :favorites
