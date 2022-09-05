@@ -1,0 +1,44 @@
+  <%= form_with url: trips_path, method: :get, class: "searchform d-flex tripspage" do %>
+    <div class="row searchquery">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for a city"
+      %>
+
+    </div>
+    <div class="row categoryquery">
+    <%= submit_tag "Search", class: "btn btn-primary" %></div>
+      <div class="row categories-list">
+      <div class="col-4 category culture">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368378/001-gioconda_gnv36j.png" %>
+        <%= check_box_tag("categories[]", "Culture", params[:categories]&.include?("Culture"), id: "culture_category", class: "cat_checkbox") %>
+        <%= label_tag("culture_category", "Culture") %>
+      </div>
+      <div class="col-4 category shopping">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368378/007-shopping-bag_kfbskf.png" %>
+        <%= check_box_tag("categories[]", "Shopping", params[:categories]&.include?("Shopping"), id: "shopping_category", class: "cat_checkbox") %>
+        <%= label_tag("shopping_category", "Shopping") %>
+        </div>
+      <div class="col-4 category food">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368379/006-fast-food_kjmbkt.png" %>
+        <%= check_box_tag("categories[]", "Food", params[:categories]&.include?("Food"), id: "food_category", class: "cat_checkbox") %>
+        <%= label_tag("food_category", "Food") %>
+      </div>
+      <div class="col-4 category nature">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368378/002-mountains_sfl7ji.png" %>
+        <%= check_box_tag("categories[]", "Nature", params[:categories]&.include?("Nature"), id: "nature_category", class: "cat_checkbox") %>
+        <%= label_tag("nature_category", "Nature") %>
+        </div>
+      <div class="col-4 category leisure">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368378/005-massage_b1wjys.png" %>
+        <%= check_box_tag("categories[]", "Leisure", params[:categories]&.include?("Leisure"), id: "leisure_category", class: "cat_checkbox") %>
+        <%= label_tag("leisure_category", "Leisure") %>
+        </div>
+      <div class="col-4 category sport">
+        <%= image_tag src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662368378/004-sneakers_mlzifz.png" %>
+        <%= check_box_tag("categories[]", "Sport", params[:categories]&.include?("Sport"), id: "sport_category", class: "cat_checkbox" ) %>
+        <%= label_tag("sport_category", "Sport") %>
+      </div>
+      </div>
+  <% end %>
