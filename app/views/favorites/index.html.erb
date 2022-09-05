@@ -6,13 +6,19 @@
   <div>
 
   <% @favorite_trips.flatten.each do |trip| %>
-    <p>NAME: <%= trip.name %></p>
-    <p>DESCRIPTION:<%= trip.description %></p>
-    <%= link_to "more", trip_path(trip) %>
-    <%= button_to "unfavorite", toggle_favorite_trip_path(trip), method: :post %>
+    <div>
+      <div class="container-heart">
+        <p>Created by <%= link_to trip.user.name, user_path(trip.user) %></p>
 
+        <%= button_to toggle_favorite_trip_path(trip), method: :post, class: "icon-heart"  do %>
+          <i class="fa-solid fa-heart"></i>
+        <% end %>
+      </div>
+
+      <div class="card-envolve">
+        <%= render 'trips/trip_card', trip: trip %>
+      </div>
+    </div>
   <% end %>
-
-
 
 </div>
