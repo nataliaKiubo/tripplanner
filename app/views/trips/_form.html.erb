@@ -4,14 +4,14 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :categories, :collection => %w[Culture Shopping Food Nature Leisure Sport]%>
-    <%= f.input :amount_of_travellers %>
-    <%= f.input :amount_of_children %>
-    <%= f.input :pets %>
+    <%= f.input :name, placeholder:"Name your trip", required: false %>
+    <%= f.input :description, placeholder:"Write a short overview of your trip: how to get around, tips or tricks", required: false %>
+    <%= f.input :categories, selected:"Select", label: "Category", :collection => ["Select a category", "Culture", "Shopping", "Food", "Nature", "Leisure", "Sport"],  placeholder:"Select one category", required: false %>
+    <%= f.input :amount_of_travellers, collection: 0..10,selected: 0, required: false %>
+    <%= f.input :amount_of_children, collection: 0..10, selected: 0, required: false, prompt: "Select your age" %>
+    <%= f.input :pets, label: "Bringing any furry friends along?", as: :radio_buttons, collection:['No', 'Yes'] %>
     <%# <%= f.input :original_trip_id, :as => :hidden %>
-    <%= f.input :main_image, as: :file %>
+    <%= f.input :main_image, as: :file, required: false %>
   </div>
 
   <h4>Your stops</h4>
