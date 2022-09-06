@@ -8,6 +8,27 @@ export default class extends Controller {
   static targets = ["address"]
 
   connect() {
+
+    const suggestions = document.querySelectorAll(".suggestions-wrapper")
+
+    suggestions.forEach((wrapper) => {
+      window.addEventListener("DOMContentLoaded", (event) => {
+        wrapper.classList.add("d-none")
+      })
+    })
+
+    const addressField = document.querySelectorAll(".mapboxgl-ctrl")
+
+    addressField.forEach((field) => {
+      field.addEventListener("keyup", (event) => {
+
+        suggestions.forEach((suggestion) => {
+          suggestion.classList.remove("d-none")
+        })
+
+      })
+    })
+
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address"

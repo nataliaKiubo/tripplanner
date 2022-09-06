@@ -8,11 +8,9 @@ document.addEventListener("turbo:load", () => {
     console.log(categoryElement)
     if (tag.checked) {
       categoryElement.classList.add("active-category")
-      console.log("ueeee")
     }
 
     categoryElement.addEventListener("click", (event) => {
-      console.log("ueeee 2")
       const tag = categoryElement.querySelector("input[type=checkbox]");
       tag.checked = !tag.checked
 
