@@ -2,7 +2,6 @@
     <%#  %>
 
           <% if user_signed_in? %>
-
             <% if current_user.favorited?(trip) %>
               <%= button_to toggle_favorite_trip_path(trip), method: :post, class: "icon-heart"  do %>
                 <i class="fa-solid fa-heart"></i>
@@ -44,11 +43,6 @@
 
           <%= link_to user_path(trip.user) do %>
             <div>
-
-
-
-
-
               <% if trip.user.avatar.key == nil %>
                 <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1661437338/001-user_vutg9d.png", class: "card-avatar" %>
               <% else %>
