@@ -48,9 +48,10 @@
   color: var(--bs-link-color);
   background: none;
   border: none;
+  position: absolute;
 }
 
 .container-heart {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
