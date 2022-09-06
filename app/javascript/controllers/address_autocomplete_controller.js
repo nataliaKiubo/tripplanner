@@ -12,7 +12,7 @@ export default class extends Controller {
     const suggestions = document.querySelectorAll(".suggestions-wrapper")
 
     suggestions.forEach((wrapper) => {
-      window.addEventListener("load", (event) => {
+      window.addEventListener("DOMContentLoaded", (event) => {
         wrapper.classList.add("d-none")
       })
     })
