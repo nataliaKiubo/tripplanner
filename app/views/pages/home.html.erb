@@ -64,5 +64,9 @@
 
 <div class="container">
   <h2>Your Trips</h2>
-  <%= link_to "Start planning", new_trip_path, class: "btn btn-primary"  %>
+  <% if user_signed_in? %>
+    <%= link_to "Start planning", new_trip_path, class: "btn btn-primary"  %>
+  <% else %>
+  <%= link_to "Start planning",  new_user_session_path, class: "btn btn-primary" %>
+  <% end %>
 </div>
