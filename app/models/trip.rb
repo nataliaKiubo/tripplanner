@@ -10,7 +10,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :original_trip, class_name: "Trip", optional: true
   has_many :stops, dependent: :destroy
-  accepts_nested_attributes_for :stops, allow_destroy: true
+  accepts_nested_attributes_for :stops, allow_destroy: true, reject_if: :all_blank
   attr_accessor :original_image_url
 
   validates :name, :main_image, :description, :amount_of_travellers, :amount_of_children, :categories, presence: true

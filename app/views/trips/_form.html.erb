@@ -13,24 +13,12 @@
     <%# <%= f.input :original_trip_id, :as => :hidden %>
     <%= f.input :main_image, as: :file %>
   </div>
-    <% i = 1 %>
-    <%= f.simple_fields_for :stops do |stop| %>
-    <h4>Stop <%= i %> </h4>
-      <div class="form-inputs">
-        <%= stop.input :date, html5: true %>
-        <%= stop.input :address,
-        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-        %>
-        <%= stop.input :description %>
-        <% if @trip.new_record? %>
-        <% else %>
-        <%= stop.check_box :_destroy %>
-        <%= stop.label :delete %>
-        <% end %>
-        <% i += 1 %>
+    <%= link_to_add_nested(f, :stops, '#stops') %>
+    <div id="stops">
+      <%= f.simple_fields_for :stops do |stop| %>
+        <%= render "stop_fields", form: stop %>
+      <% end %>
     </div>
-  <% end %>
 
   <div class="form-actions">
       <%= f.button :submit, class: "btn btn-primary" %>

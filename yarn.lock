@@ -1397,6 +1397,11 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vanilla-nested@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vanilla-nested/-/vanilla-nested-1.7.0.tgz#fc1e8193ea8c76dfe3df96903c382b421c959095"
+  integrity sha512-wA5Y+IoyzBNiMbvxdD6flN0iPCUi78beB2HzJ91G6iUB7S/WWCAiCgCZoCrlG4pHk4fJPIxyAgTVQHZA17CGSQ==
+
 watchpack@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.0.tgz#fa33032374962c78113f93c7f2fb4c54c9862a5d"
