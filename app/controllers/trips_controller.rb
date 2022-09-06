@@ -50,8 +50,6 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     @trip.stops.build
-    @trip.stops.build
-    @trip.stops.build
     authorize @trip
   end
 
