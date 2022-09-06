@@ -11,10 +11,10 @@
     <%= f.input :amount_of_children, collection: 0..10, selected: 0, required: false, prompt: "Select your age" %>
     <%= f.input :pets, label: "Bringing any furry friends along?", as: :radio_buttons, collection:['No', 'Yes'] %>
     <%# <%= f.input :original_trip_id, :as => :hidden %>
-    <%= f.input :main_image, as: :file, required: false %>
+    <%= f.input :main_image, as: :file, required: false, label: "Select a photo" %>
   </div>
 
-  <h4>Your stops</h4>
+  <strong><h4>Adding your stops</h4></strong>
     <div id="stops">
       <%= f.simple_fields_for :stops do |stop| %>
         <%= render "stop_fields", form: stop %>
