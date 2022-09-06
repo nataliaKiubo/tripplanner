@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_many :trips
   has_many :favorites
+  has_many :reviews
   #, through: :trips
   has_one_attached :avatar
   acts_as_favoritor

@@ -5,9 +5,11 @@ Rails.application.routes.draw do
       get :copy
     end
     resources :stops
+    resources :reviews, only: [:create]
   end
   devise_for :users
   root to: "pages#home"
+  resources :reviews, only: [:edit, :destroy, :update]
 
 
 # so we can have: domain.com/users/:id/favorites

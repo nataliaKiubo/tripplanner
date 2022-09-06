@@ -33,6 +33,8 @@ class TripsController < ApplicationController
   def show
     authorize @trip
     @stops = @trip.stops.group_by(&:date)
+    @review = Review.new
+    @reviews = @trip.reviews.all
 
     # The `geocoded` scope filters only flats with coordinates
     @markers = @trip.stops.geocoded.map do |stop|
