@@ -25,39 +25,41 @@
 
 
     <%# Navbar Fixed on Bottom %>
-    <% if user_signed_in? %>
+
         <nav class="navbar fixed-bottom bg-light">
         <div id= "icon-navbar-bottom" class="container-fluid">
 
           <%# Home  %>
-          <% if user_signed_in? %>
+          <% home_checked_path = user_signed_in? ? root_path : new_user_session_path  %>
             <li class="nav-item active">
-              <a href="<%= root_path %>"><i class="fa-solid fa-house-chimney"></i></a>
+              <a href="<%= home_checked_path %>"><i class="fa-solid fa-house-chimney"></i></a>
             </li>
-          <% end %>
+
 
           <%# User %>
-          <% if user_signed_in? %>
+          <% user_checked_path = user_signed_in? ? user_path(current_user) : new_user_session_path   %>
             <li class="nav-item">
-              <a href="<%= user_path(current_user) %>"><i class="fa-solid fa-user"></i></a>
+              <a href="<%= user_checked_path  %>"><i class="fa-solid fa-user"></i></a>
             </li>
-          <% end %>
+
+
 
           <%# Favorites %>
-          <% if user_signed_in? %>
+          <% favorites_checked_path = user_signed_in? ? user_favorites_path(current_user) : new_user_session_path   %>
             <li class="nav-item">
-              <a href="<%= user_favorites_path(current_user) %>"><i class="fa-solid fa-heart"></i></a>
+              <a href="<%= favorites_checked_path %>"><i class="fa-solid fa-heart"></i></a>
             </li>
-          <% end %>
+
+
+
 
           <%# Add New Trip %>
-          <% if user_signed_in? %>
+          <% new_trip_checked_path = user_signed_in? ? new_trip_path : new_user_session_path   %>
             <li class="nav-item">
-              <a href="<%= new_trip_path %>"><i class="fa-solid fa-circle-plus"></i></a>
+              <a href="<%= new_trip_checked_path %>"><i class="fa-solid fa-circle-plus"></i></a>
             </li>
-          <% end %>
+
         </div>
-      <% end %>
     </nav>
   </body>
 </html>
