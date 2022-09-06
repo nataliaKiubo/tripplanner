@@ -1,37 +1,4 @@
-<div class="container-sm mb-5">
 
-  <h3 class='d-flex justify-content-start'>
-    <strong><%= @trip.name %></strong>
-  </h3>
-
-
-    <div class="container-heart">
-      <p>Created by <%= link_to @trip.user.name, user_path(@trip.user) %>
-      </p>
-      <div class="if-heart">
-        <% if user_signed_in? %>
-          <% if @user.favorited?(@trip) %>
-            <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart"  do %>
-              <i class="fa-solid fa-heart"></i>
-            <% end %>
-          <% else %>
-            <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart" do %>
-              <i class="fa-regular fa-heart"></i>
-            <% end  %>
-          <% end %>
-
-        <% else %>
-
-          <%= link_to user_session_path do %>
-            <i class="fa-regular fa-heart"></i>
-          <% end %>
-
-        <% end %>
-      </div>
-    </div>
-
-  <div class="col-12 cities">
-    <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "cities-image" %>
-    <p class= "cities-title p-3"><%= @trip.description %></p>
-  </div>
+<div class="big-card-trip">
+  <%= render 'trips/trip_card', trip: @trip %>
 </div>
