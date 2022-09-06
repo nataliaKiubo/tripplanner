@@ -22,5 +22,7 @@ class Trip < ApplicationRecord
   has_many_attached :gallery_images
   acts_as_favoritable
 
-
+  def self.copied_trips(trip)
+    Trip.where(original_trip_id: trip.id).count
+  end
 end
