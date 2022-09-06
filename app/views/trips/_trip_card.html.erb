@@ -49,7 +49,7 @@
 
 
 
-              <% if current_user.avatar.key == nil %>
+              <% if trip.user.avatar.key == nil %>
                 <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1661437338/001-user_vutg9d.png", class: "card-avatar" %>
               <% else %>
                 <%= cl_image_tag trip.user.avatar.key, crop: :fill, class: "card-avatar" %>
