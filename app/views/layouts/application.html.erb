@@ -30,9 +30,8 @@
         <div id= "icon-navbar-bottom" class="container-fluid">
 
           <%# Home  %>
-          <% home_checked_path = user_signed_in? ? root_path : new_user_session_path  %>
             <li class="nav-item active">
-              <a href="<%= home_checked_path %>"><i class="fa-solid fa-house-chimney"></i></a>
+              <a href="<%= root_path %>"><i class="fa-solid fa-house-chimney"></i></a>
             </li>
 
 
