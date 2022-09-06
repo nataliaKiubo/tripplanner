@@ -13,11 +13,13 @@
     <%# <%= f.input :original_trip_id, :as => :hidden %>
     <%= f.input :main_image, as: :file %>
   </div>
-    <%= link_to_add_nested(f, :stops, '#stops') %>
+
+  <h4>Your stops</h4>
     <div id="stops">
       <%= f.simple_fields_for :stops do |stop| %>
         <%= render "stop_fields", form: stop %>
       <% end %>
+      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
     </div>
 
   <div class="form-actions">
