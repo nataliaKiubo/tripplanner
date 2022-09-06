@@ -1,7 +1,7 @@
 .forms-bg {
   background: #EDDECC;
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 4px;
 
   .form-control {
     border: none;
@@ -15,11 +15,11 @@
 }
 
 .searchform input#query {
-  border-radius: 10px 0 0 10px;
+  border-radius: 4px 0 0 4px;
 }
 
 .searchform input.btn.btn-primary {
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 4px 4px 0;
 }
 
 .name-heart {
