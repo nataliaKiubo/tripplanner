@@ -1,9 +1,9 @@
 <div class="wrapper-div">
-  <%= form.input :date, html5: true %>
+  <%= form.input :date, html5: true%>
   <%= form.input :address,
     input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
     wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
   %>
-  <%= form.input :description %>
+  <%= form.input :description, placeholder: "Add a short description for this stop" %>
   <%= link_to_remove_nested(form, link_text: "remove stop", link_classes: 'btn btn-primary') %>
 </div>
