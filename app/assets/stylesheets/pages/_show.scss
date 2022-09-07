@@ -1,7 +1,7 @@
 .tripuser {
   float: left;
   background-color: #ffffff;
-  padding: 10px 16px;
+  padding: 6px 10px;
   border-radius: 44px;
   position: absolute;
   left: 16px;
@@ -41,4 +41,24 @@
 
 .trip-description {
   background-color: #ffffff;
+}
+
+.card-header {
+  padding: 0;
+}
+
+.stoprow {
+  background-color: #f6f6f6;
+  margin-bottom: 20px;
+}
+
+
+.list-group-item {
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+}
+
+li.list-group-item:nth-child(2) {
+  padding: 0;
 }

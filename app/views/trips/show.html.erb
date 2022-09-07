@@ -87,11 +87,8 @@
     <p><%= @trip.description %></p>
   </div>
 
-
-
-
-      <%= render 'stops/stop' %>
-      <%= render 'reviews/review' %>
+  <%= render 'stops/stop' %>
+  <%= render 'reviews/review' %>
 
   <h2><%= pluralize @trip.reviews.count,'Review'%></h2>
   <div class="container">

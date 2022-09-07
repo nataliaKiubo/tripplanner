@@ -1,26 +1,25 @@
-<div class="container-sm mb-5">
-  <h5 class='d-flex justify-content-start'>
-        <strong>Itinerary</strong>
-  </h5>
 
+<div class="mt-4 mb-4 trip-description p-4">
+  <h2>Itinerary</h2>
   <% i = 1 %>
   <% @stops.keys.sort.each do |day| %>
-      <div class="card bg-light mb-3 col-12">
+      <div class="stoprow rounded p-4 position-relative">
         <% if user_signed_in?%>
-          <div class="card-header">Day <%= i %>: <i lang="it"><%= l day %></div>
+          <div class="small">Day <%= i %>: <%= day.strftime("%d.%m.%Y") %></div>
         <% else %>
-          <div class="card-header">Day <%= i %></i></div>
+          <div>Day <%= i %></i></div>
         <% end %>
           <% @stops[day].each do |stop| %>
-            <div class="stop-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> <%= stop.address %></li>
-                <li class="list-group-item"> <%= stop.description %></li>
-              </ul>
-            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong><%= stop.name %></strong></li>
+              <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> <%= stop.address %></li>
+              <li class="list-group-item"> <%= stop.description %></li>
+            </ul>
+
 
             <% if user_signed_in? && @trip.user == current_user %>
-              <div class="stops-links container">
+              <div class="stops-links container border-top">
                 <a href="<%= edit_trip_stop_path(@trip, stop) %>"><i class="fa-regular fa-pen-to-square"></i></a>
                 <%= button_to trip_stop_path(@trip, stop), class: "delete_stop", method: :delete do %><i class="fa-regular fa-trash-can"></i>
                 <% end %>
@@ -34,7 +33,8 @@
 
   <% end %>
 
-  <%# <div class="container stop">
+  </div>
+  <%# < class="container stop">
   <%= link_to "Add stop", new_trip_stop_path(@trip), class: "btn btn-primary" %>
 
     <div style="height: 350px; col-12"
@@ -42,4 +42,3 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-</div>
