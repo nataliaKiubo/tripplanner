@@ -8,6 +8,10 @@
   bottom: 16px;
   font-size: 14px;
 
+  a {
+    color: #000000;
+  }
+
   img {
     height: 32px;
     border-radius: 50%;
@@ -109,4 +113,9 @@ li.list-group-item:nth-child(2) {
 .row.mt-4.mb-4.p-4.trip-description {
   width: 100%;
   margin: 0 auto;
+}
+
+
+.trip-description .reviews-box:last-child {
+  border-bottom: none !important;
 }
