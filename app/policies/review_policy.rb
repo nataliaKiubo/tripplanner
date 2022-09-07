@@ -1,4 +1,4 @@
-class StopPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   def new?
     true
   end
@@ -16,7 +16,7 @@ class StopPolicy < ApplicationPolicy
   end
 
   def create?
-    record.trip.user == user
+    true
   end
 
   def destroy?

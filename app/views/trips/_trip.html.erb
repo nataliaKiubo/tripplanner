@@ -1,3 +1,7 @@
+<%="⭐" * Review.average_rating(@trip)%>
+<p>This trip's rating is <%= Review.average_rating(@trip) %></p>
+<p>This trip was saved <%= @trip.favorited.count %> times </p>
+<p>This trip was copied <%= Trip.copied_trips(@trip) %> times </p>
 
 <div class="big-card-trip">
   <%= render 'trips/trip_card', trip: @trip %>

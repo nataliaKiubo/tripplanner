@@ -17,9 +17,12 @@ class Trip < ApplicationRecord
 
   has_many :ratings
   has_many :favorites
+  has_many :reviews, dependent: :destroy
   has_one_attached :main_image
   has_many_attached :gallery_images
   acts_as_favoritable
 
-
+  def self.copied_trips(trip)
+    Trip.where(original_trip_id: trip.id).count
+  end
 end

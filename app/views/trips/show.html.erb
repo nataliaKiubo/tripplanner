@@ -52,7 +52,16 @@
 
 
       <%= render 'stops/stop' %>
-      <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
+      <%= render 'reviews/review' %>
+
+  <h2><%= pluralize @trip.reviews.count,'Review'%></h2>
+  <div class="container">
+    <% @reviews.each do |review| %>
+      <h2><%= review.content %></h2>
+      <h2><%= review.user.name %></h2>
+    <% end %>
+  </div>
+
   <div class="trips-links container">
     <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
