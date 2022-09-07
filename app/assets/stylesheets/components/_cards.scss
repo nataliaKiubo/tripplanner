@@ -7,8 +7,36 @@
   margin-top: 16px;
 }
 
+.user-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+.user_name {
+  position: center;
+}
+
 .card-name.d-flex.flex-column img {
   max-width: 50%;
+}
+
+.width_100 {
+  width: 100%;
+  margin: auto;
+}
+
+.icon_user {
+  margin: auto;
+  color: #BF5E2D;
+  text-align: center;
+}
+
+.fa {
+  color: black;
 }
 
 .card-image {

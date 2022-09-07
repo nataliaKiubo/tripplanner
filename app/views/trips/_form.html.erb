@@ -15,9 +15,12 @@
   </div>
 
   <strong><h4>Adding your stops</h4></strong>
+    <% i = 1 %>
     <div id="stops">
       <%= f.simple_fields_for :stops do |stop| %>
+      <h2>Day <%= i%></h2>
         <%= render "stop_fields", form: stop %>
+      <% i = 1 %>
       <% end %>
       <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
     </div>
