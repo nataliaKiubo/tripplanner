@@ -71,11 +71,10 @@
         <p><i class="fa-solid fa-children"></i> Suitable for children </p>
       <% end %>
 
-      <p><i class="fa-solid fa-paw"></i>
       <% if @trip.pets %>
-        <%= @trip.pets %> Pet friendly</p>
+        <p><i class="fa-solid fa-paw"></i> Pet friendly</p>
       <% else %>
-        <%= @trip.pets %> Not suitable for pets</p>
+        <p><i class="fa-solid fa-paw"></i> Not suitable for pets</p>
       <% end %>
     </div>
 
