@@ -7,6 +7,20 @@
   margin-top: 16px;
 }
 
+.card {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.card-category {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 .user-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -41,7 +55,6 @@
 
 .card-image {
   width: 100%;
-  margin: 0 auto;
   height: 136px;
   object-fit: cover;
 }
