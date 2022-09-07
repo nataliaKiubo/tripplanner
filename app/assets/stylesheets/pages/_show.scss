@@ -1,0 +1,64 @@
+.tripuser {
+  float: left;
+  background-color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 44px;
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  font-size: 14px;
+
+  img {
+    height: 32px;
+    border-radius: 50%;
+  }
+}
+
+.card-category {
+  position: relative;
+}
+
+.show-image {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.trip-details {
+  background-color: #ffffff;
+
+  .fa-solid {
+    margin-right: 8px;
+  }
+
+  p {
+    line-height: 2;
+  }
+}
+
+.fa-heart {
+  color: $tripred;
+}
+
+.trip-description {
+  background-color: #ffffff;
+}
+
+.card-header {
+  padding: 0;
+}
+
+.stoprow {
+  background-color: #f6f6f6;
+  margin-bottom: 20px;
+}
+
+
+.list-group-item {
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+}
+
+li.list-group-item:nth-child(2) {
+  padding: 0;
+}
