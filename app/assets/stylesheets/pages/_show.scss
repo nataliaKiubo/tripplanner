@@ -25,4 +25,20 @@
 
 .trip-details {
   background-color: #ffffff;
+
+  .fa-solid {
+    margin-right: 8px;
+  }
+
+  p {
+    line-height: 2;
+  }
+}
+
+.fa-heart {
+  color: $tripred;
+}
+
+.trip-description {
+  background-color: #ffffff;
 }
