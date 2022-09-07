@@ -1,124 +1,135 @@
 <div>
 
-<div class="trips-links container sticky-top">
-  <div class="position-absolute">
-    <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <div class="trips-links container sticky-top">
+    <div class="position-absolute">
+      <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <% if user_signed_in? %>
-      <a href="<%= copy_trip_path(@trip) %>"><i class="fa-regular fa-copy"></i></a>
-    <% else %>
-      <a href="<%= new_user_session_path %>"><i class="fa-regular fa-copy"></i></a>
-    <% end %>
-
-    <% if user_signed_in? && current_user == @trip.user %>
-      <a href="<%= edit_trip_path(@trip) %>"><i class="fa-regular fa-pen-to-square"></i></a>
-    <% end %>
-
-    <% if user_signed_in? && current_user == @trip.user %>
-      <%= button_to trip_path(@trip), class: "delete_stop", method: :delete do %>
-        <i class="fa-regular fa-trash-can"></i>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="container">
-  <p style="color: green"><%= notice %></p>
-
-  <div class="card-category">
-    <% if user_signed_in? %>
-      <% if current_user.favorited?(@trip) %>
-        <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart"  do %>
-          <i class="fa-solid fa-heart"></i>
-      <% end %>
+      <% if user_signed_in? %>
+        <a href="<%= copy_trip_path(@trip) %>"><i class="fa-regular fa-copy"></i></a>
       <% else %>
-        <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart" do %>
-        <i class="fa-regular fa-heart"></i>
-      <% end  %>
-    <% end %>
-
-    <% else %>
-      <%= link_to user_session_path do %>
-        <i class="fa-regular fa-heart"></i>
+        <a href="<%= new_user_session_path %>"><i class="fa-regular fa-copy"></i></a>
       <% end %>
-    <% end %>
 
-    <% if  @trip.main_image.key.present? %>
-      <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "show-image" %>
-    <% else %>
-      <img class="show-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
-    <% end %>
-    <div class="tripuser">
-    <%= image_tag @trip.user.avatar %>
-      <%= @trip.user.name %>
-    </div>
-  </div>
+      <% if user_signed_in? && current_user == @trip.user %>
+        <a href="<%= edit_trip_path(@trip) %>"><i class="fa-regular fa-pen-to-square"></i></a>
+      <% end %>
 
-  <div class="mt-3">
-    <h1><%= @trip.name %></h1>
-
-    <div class="d-flex justify-content-between mb-3 mt-3">
-      <%# <%="⭐" * Review.average_rating(@trip)%>
-      <p>⭐ <%= Review.average_rating(@trip) %> Ø rating</p>
-
-      <p><i class="fa-solid fa-heart"></i>
-        <% if @trip.favorited.count == 1%>
-          <%= @trip.favorited.count %> like</p>
-        <% else %>
-          <%= @trip.favorited.count %> likes</p>
+      <% if user_signed_in? && current_user == @trip.user %>
+        <%= button_to trip_path(@trip), class: "delete_stop", method: :delete do %>
+          <i class="fa-regular fa-trash-can"></i>
         <% end %>
-
-      <p><i class="fa-solid fa-clone" style="color: #096599;"></i>
-        <% if Trip.copied_trips(@trip) == 1 %>
-          <%= Trip.copied_trips(@trip) %> copy </p>
-        <% else %>
-          <%= Trip.copied_trips(@trip) %> copies </p>
-        <% end %>
-
-    </div>
-
-    <div class="trip-details rounded p-4 mb-3">
-      <p><i class="fa-solid fa-eye"></i> <%= @trip.categories %></p>
-
-      <% if @trip.amount_of_travellers == 1 %>
-        <p><i class="fa-solid fa-user"></i> Great for solo travellers</p>
-      <% elsif @trip.amount_of_travellers == 2 %>
-        <p><i class="fa-solid fa-user-group"></i> Great for couples</p>
-      <% else %>
-        <p><i class="fa-solid fa-people-group"></i> Suitable for groups</p>
-      <% end %>
-
-      <% if @trip.amount_of_children == 0 %>
-        <p><i class="fa-solid fa-children"></i> Not suitable for children </p>
-      <% else %>
-        <p><i class="fa-solid fa-children"></i> Suitable for children </p>
-      <% end %>
-
-      <% if @trip.pets %>
-        <p><i class="fa-solid fa-paw"></i> Pet friendly</p>
-      <% else %>
-        <p><i class="fa-solid fa-paw"></i> Not suitable for pets</p>
       <% end %>
     </div>
-
-
-
   </div>
 
-  <div class="mt-4 mb-4 trip-description p-4">
-    <h2>Description:</h2>
-    <p><%= @trip.description %></p>
-  </div>
-
-  <%= render 'stops/stop' %>
-  <%= render 'reviews/review' %>
-
-  <h2><%= pluralize @trip.reviews.count,'Review'%></h2>
   <div class="container">
+    <p style="color: green"><%= notice %></p>
+
+    <div class="card-category">
+      <% if user_signed_in? %>
+        <% if current_user.favorited?(@trip) %>
+          <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart"  do %>
+            <i class="fa-solid fa-heart"></i>
+        <% end %>
+        <% else %>
+          <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart" do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end  %>
+      <% end %>
+
+      <% else %>
+        <%= link_to user_session_path do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
+      <% end %>
+
+      <% if  @trip.main_image.key.present? %>
+        <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "show-image" %>
+      <% else %>
+        <img class="show-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
+      <% end %>
+      <div class="tripuser">
+      <%= link_to user_path(@trip.user) do %>
+        <%= image_tag @trip.user.avatar %>
+        <%= @trip.user.name %>
+      <% end %>
+
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <h1><%= @trip.name %></h1>
+
+      <div class="d-flex justify-content-between mb-3 mt-3">
+        <%# <%="⭐" * Review.average_rating(@trip)%>
+        <p>⭐ <%= Review.average_rating(@trip) %> Ø rating</p>
+
+        <p><i class="fa-solid fa-heart"></i>
+          <% if @trip.favorited.count == 1%>
+            <%= @trip.favorited.count %> like</p>
+          <% else %>
+            <%= @trip.favorited.count %> likes</p>
+          <% end %>
+
+        <p><i class="fa-solid fa-clone" style="color: #096599;"></i>
+          <% if Trip.copied_trips(@trip) == 1 %>
+            <%= Trip.copied_trips(@trip) %> copy </p>
+          <% else %>
+            <%= Trip.copied_trips(@trip) %> copies </p>
+          <% end %>
+
+      </div>
+
+      <div class="trip-details rounded p-4 mb-3">
+        <p><i class="fa-solid fa-eye"></i> <%= @trip.categories %></p>
+
+        <% if @trip.amount_of_travellers == 1 %>
+          <p><i class="fa-solid fa-user"></i> Great for solo travellers</p>
+        <% elsif @trip.amount_of_travellers == 2 %>
+          <p><i class="fa-solid fa-user-group"></i> Great for couples</p>
+        <% else %>
+          <p><i class="fa-solid fa-people-group"></i> Suitable for groups</p>
+        <% end %>
+
+        <% if @trip.amount_of_children == 0 %>
+          <p><i class="fa-solid fa-children"></i> Not suitable for children </p>
+        <% else %>
+          <p><i class="fa-solid fa-children"></i> Suitable for children </p>
+        <% end %>
+
+        <% if @trip.pets %>
+          <p><i class="fa-solid fa-paw"></i> Pet friendly</p>
+        <% else %>
+          <p><i class="fa-solid fa-paw"></i> Not suitable for pets</p>
+        <% end %>
+      </div>
+
+
+
+    </div>
+
+    <div class="mt-4 mb-4 trip-description p-4">
+      <h2>Description:</h2>
+      <p><%= @trip.description %></p>
+    </div>
+
+    <%= render 'stops/stop' %>
+    <%= render 'reviews/review' %>
+
+    <div class="mt-4 mb-4 trip-description p-4">
+    <h2><%= pluralize @trip.reviews.count,'Review'%></h2>
     <% @reviews.each do |review| %>
-      <h2><%= review.content %></h2>
-      <h2><%= review.user.name %></h2>
-    <% end %>
+      <div class="border-bottom mb-3 p-3 reviews-box">
+
+          <div class="d-flex align-items-center mb-3">
+            <%= image_tag review.user.avatar, class: "avatar me-3" %>
+            <p><%= review.user.name %> <span style="font-size: 14px; color: gray;">(<%= review.created_at.strftime("%d.%m.%Y") %>)</span></p>
+          </div>
+          <%="⭐" * review.rating %>
+          <p class="fst-italic">"<%= review.content %>"</p>
+
+      </div>
+       <% end %>
+    </div>
   </div>
-</div>
 </div>

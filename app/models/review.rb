@@ -3,7 +3,7 @@ class Review < ApplicationRecord
   belongs_to :user
 
   def self.average_rating(trip)
-    Review.where(trip_id: trip.id).average(:rating).to_i
+    Review.where(trip_id: trip.id).average(:rating).to_f
   end
 
 end
