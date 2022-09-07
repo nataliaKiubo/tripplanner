@@ -1,5 +1,6 @@
 <%= link_to trip_path(trip) do %>
 
+
   <div class="card-category">
 
     <% if user_signed_in? %>
@@ -24,9 +25,7 @@
     <% else %>
       <img class="card-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
     <% end %>
-  </div>
-
-  <div class="card-description">
+    <div class="card-description">
     <%= link_to user_path(trip.user) do %>
       <div class="avatar-on-card">
         <% if trip.user.avatar.key == nil %>
@@ -36,9 +35,10 @@
         <% end %>
       </div>
     <% end %>
+
     <div class="card-name d-flex flex-column">
       <%= trip.name %>
-      <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1662471241/rating_1_i7mymg.png" %>
     </div>
+  </div>
   </div>
 <% end %>
