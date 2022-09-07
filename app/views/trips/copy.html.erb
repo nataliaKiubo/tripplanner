@@ -5,41 +5,32 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :categories, :collection => %w[Culture Shopping Food Nature Leisure Sport]%>
-      <%= f.input :amount_of_travellers %>
-      <%= f.input :amount_of_children %>
-      <%= f.input :pets %>
+      <%= f.input :name, placeholder:"Name your trip", required: false %>
+      <%= f.input :description, placeholder:"Write a short overview of your trip: how to get around, tips or tricks", required: false %>
+      <%= f.input :categories, label: "Category", :collection => ["Select a category", "Culture", "Shopping", "Food", "Nature", "Leisure", "Sport"],  placeholder:"Select one category", required: false %>
+      <%= f.input :amount_of_travellers, required: false %>
+      <%= f.input :amount_of_children, required: false %>
+      <%= f.input :pets, label: "Bringing any furry friends along?", as: :radio_buttons, collection:['No', 'Yes'], selected:'No'%>
       <%= f.input :original_trip_id, :as => :hidden %>
       <% if @tripcopy.main_image %>
         <%= cl_image_tag @tripcopy.main_image.key, class: "cities-image", crop: :fill %>
       <% end %>
       <%= f.input :original_image_url, :as => :hidden, input_html: { value: @tripcopy.main_image.blob.url } %>
-      <%= f.input :main_image, as: :file %>
+<%= f.input :main_image, as: :file, required: false, label: "Select a photo" %>
       <%# <%= f.input :gallery_images, as: :file, input_html: { multiple: true} %>
     </div>
 
-<% i = 1 %>
-    <%= f.simple_fields_for :stops do |stop| %>
-    <h4>Stop <%= i %> </h4>
-      <div class="form-inputs">
-        <%= stop.input :date, html5: true %>
-        <%= stop.input :address,
-        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-        %>
-        <%= stop.input :description %>
-        <% if @trip.new_record? %>
-        <% else %>
-        <%= stop.check_box :_destroy %>
-        <%= stop.label :delete %>
-        <% end %>
+    <div id="stops">
+    <% i = 1 %>
+      <%= f.simple_fields_for :stops do |stop| %>
+        <h2>Day <%= i%></h2>
+        <%= render "stop_fields", form: stop %>
         <% i += 1 %>
+      <% end %>
+      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
     </div>
-  <% end %>
 
-  <div class="form-actions">
+    <div class="form-actions">
       <%= f.button :submit, class: "btn btn-primary" %>
     </div>
 <% end %>

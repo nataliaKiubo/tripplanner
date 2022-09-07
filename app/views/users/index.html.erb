@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>All users</h1>
+  <div id="users" class="cards">
+    <% @users.each do |user| %>
+      <div class="card-envolve">
+        <%= user.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
