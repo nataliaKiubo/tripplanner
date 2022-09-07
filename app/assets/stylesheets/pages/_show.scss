@@ -21,6 +21,8 @@
 .show-image {
   max-width: 100%;
   border-radius: 4px;
+  height: 350px;
+  object-fit: cover;
 }
 
 .trip-details {
@@ -41,6 +43,21 @@
 
 .trip-description {
   background-color: #ffffff;
+
+  .form-label {
+    font-size: 14px;
+  }
+
+  .form-select {
+    border: none;
+    font-size: 14px;
+  }
+
+  .form-control {
+    border: none;
+    font-size: 14px;
+  }
+
 }
 
 .card-header {
@@ -61,4 +78,35 @@
 
 li.list-group-item:nth-child(2) {
   padding: 0;
+}
+
+
+.list-group:last-child {
+  border-bottom: none !important;
+}
+
+.stoprow {
+  padding-bottom: 5px !important;
+}
+
+
+.icons-stops {
+  color: #9e9999;
+}
+
+.pin-stops {
+  color: $tripred;
+  font-size: 14px;
+}
+
+.position-absolute {
+  background-color: $tripred;
+  padding: 10px;
+  border-radius: 4px 0 0 4px;
+}
+
+
+.row.mt-4.mb-4.p-4.trip-description {
+  width: 100%;
+  margin: 0 auto;
 }
