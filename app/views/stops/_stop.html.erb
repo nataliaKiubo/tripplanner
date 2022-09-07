@@ -3,7 +3,7 @@
   <h2>Itinerary</h2>
   <% i = 1 %>
   <% @stops.keys.sort.each do |day| %>
-      <div class="stoprow rounded p-4 position-relative">
+      <div class="stoprow rounded p-4 position-relative mt-3">
         <% if user_signed_in?%>
           <div class="small">Day <%= i %>: <%= day.strftime("%d.%m.%Y") %></div>
         <% else %>
@@ -11,24 +11,25 @@
         <% end %>
           <% @stops[day].each do |stop| %>
 
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush border-bottom pb-3 mb-3">
+              <div class="d-flex justify-content-between">
               <li class="list-group-item"><strong><%= stop.name %></strong></li>
-              <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> <%= stop.address %></li>
+              <% if user_signed_in? && @trip.user == current_user %>
+
+              <div class="stops-links">
+                <a href="<%= edit_trip_stop_path(@trip, stop) %>"><i class="fa-regular fa-pen-to-square icons-stops"></i></a>
+                <%= button_to trip_stop_path(@trip, stop), class: "delete_stop", method: :delete do %><i class="fa-regular fa-trash-can icons-stops"></i>
+              <% end %>
+              </div>
+              <% end %>
+              </div>
+
+              <li class="list-group-item"><i class="fas fa-map-marker-alt pin-stops"></i> <%= stop.address %></li>
               <li class="list-group-item"> <%= stop.description %></li>
             </ul>
 
-
-            <% if user_signed_in? && @trip.user == current_user %>
-              <div class="stops-links container border-top">
-                <a href="<%= edit_trip_stop_path(@trip, stop) %>"><i class="fa-regular fa-pen-to-square"></i></a>
-                <%= button_to trip_stop_path(@trip, stop), class: "delete_stop", method: :delete do %><i class="fa-regular fa-trash-can"></i>
-                <% end %>
-              </div>
-            <% end %>
-
-            <% i += 1 %>
           <% end %>
-
+        <% i += 1 %>
       </div>
 
   <% end %>

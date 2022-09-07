@@ -1,6 +1,29 @@
+<div>
+
+<div class="trips-links container sticky-top">
+  <div class="position-absolute">
+    <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <% if user_signed_in? %>
+      <a href="<%= copy_trip_path(@trip) %>"><i class="fa-regular fa-copy"></i></a>
+    <% else %>
+      <a href="<%= new_user_session_path %>"><i class="fa-regular fa-copy"></i></a>
+    <% end %>
+
+    <% if user_signed_in? && current_user == @trip.user %>
+      <a href="<%= edit_trip_path(@trip) %>"><i class="fa-regular fa-pen-to-square"></i></a>
+    <% end %>
+
+    <% if user_signed_in? && current_user == @trip.user %>
+      <%= button_to trip_path(@trip), class: "delete_stop", method: :delete do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="container">
   <p style="color: green"><%= notice %></p>
-  <h3 class='d-flex justify-content-start'></h3>
 
   <div class="card-category">
     <% if user_signed_in? %>
@@ -97,24 +120,5 @@
       <h2><%= review.user.name %></h2>
     <% end %>
   </div>
-
-  <div class="trips-links container">
-    <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-
-    <% if user_signed_in? %>
-      <a href="<%= copy_trip_path(@trip) %>"><i class="fa-regular fa-copy"></i></a>
-    <% else %>
-      <a href="<%= new_user_session_path %>"><i class="fa-regular fa-copy"></i></a>
-    <% end %>
-
-    <% if user_signed_in? && current_user == @trip.user %>
-      <a href="<%= edit_trip_path(@trip) %>"><i class="fa-regular fa-pen-to-square"></i></a>
-    <% end %>
-
-    <% if user_signed_in? && current_user == @trip.user %>
-      <%= button_to trip_path(@trip), class: "delete_stop", method: :delete do %>
-        <i class="fa-regular fa-trash-can"></i>
-      <% end %>
-    <% end %>
-  </div>
+</div>
 </div>
