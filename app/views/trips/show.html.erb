@@ -1,7 +1,56 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
     <h3 class='d-flex justify-content-start'></h3>
-      <%= render 'trip' %>
+
+  <div class="card-category">
+    <% if user_signed_in? %>
+      <% if current_user.favorited?(@trip) %>
+        <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart"  do %>
+          <i class="fa-solid fa-heart"></i>
+      <% end %>
+      <% else %>
+        <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart" do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end  %>
+    <% end %>
+
+    <% else %>
+      <%= link_to user_session_path do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
+
+    <% if  @trip.main_image.key.present? %>
+      <%= cl_image_tag @trip.main_image.key, crop: :fill, class: "show-image" %>
+    <% else %>
+      <img class="show-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
+    <% end %>
+    <div class="tripuser">
+    <%= image_tag @trip.user.avatar %>
+      <%= @trip.user.name %>
+    </div>
+  </div>
+
+<div class="mt-3">
+  <h1><%= @trip.name %></h1>
+
+  <div class="trip-details rounded">
+    <%= @trip.categories %>
+    <%= @trip.amount_of_travellers %>
+    <%= @trip.amount_of_children %>
+    <%= @trip.pets %>
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
       <%= render 'stops/stop' %>
       <%# <%= link_to "Edit this stop", edit_stop_path(stop) %>
   <div class="trips-links container">

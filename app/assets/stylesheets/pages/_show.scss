@@ -1,0 +1,28 @@
+.tripuser {
+  float: left;
+  background-color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 44px;
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  font-size: 14px;
+
+  img {
+    height: 32px;
+    border-radius: 50%;
+  }
+}
+
+.card-category {
+  position: relative;
+}
+
+.show-image {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.trip-details {
+  background-color: #ffffff;
+}
