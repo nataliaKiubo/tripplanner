@@ -48,7 +48,7 @@
       <% end %>
       <div class="tripuser">
       <%= link_to user_path(@trip.user) do %>
-        <% if @trip.user.avatar %>
+        <% if @trip.user.avatar.present? %>
           <%= image_tag @trip.user.avatar %>
         <% else %>
           <img src="https://res.cloudinary.com/ddxqnyga2/image/upload/v1662470428/tripplanner-avatar_vh1ooe.jpg">
