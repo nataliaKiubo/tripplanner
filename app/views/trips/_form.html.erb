@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <strong><h2>Adding your stops</h2></strong>
+  <strong><h2>Add your stops</h2></strong>
     <% i = 1 %>
     <div id="stops">
       <%= f.simple_fields_for :stops do |stop| %>
@@ -28,9 +28,9 @@
 
 
   <div class="form-actions">
-      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
+      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn-circle pt-2 bold') %>
   </div>
   <div class="form-actions pt-3">
-      <%= f.button :submit, class: "btn btn-primary" %>
+      <%= f.button :submit, class: "btn btn-primary mb-3" %>
   </div>
 <% end %>

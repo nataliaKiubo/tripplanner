@@ -2,6 +2,7 @@
   <div class="info_stop container position-relative">
   <%= link_to_remove_nested(form, link_text: "X", link_classes: 'remove-stop btn') %>
   <%= form.input :date, html5: true, required: false%>
+  <%= form.input :name, required: false, placeholder:"Name this stop" %>
   <%= form.input :address, required: false,
     input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
     wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
