@@ -1,12 +1,9 @@
   <div class="row mt-4 mb-4 p-4 trip-description">
     <h2>Rate this trip</h2>
-    <div class="col col-12">
       <%= simple_form_for [@trip, @review] do |f| %>
         <%= f.input :rating, collection: (1..5).to_a %>
         <%= f.input :content %>
-    </div>
-    <div class="col col-12">
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    </div>
-    <% end %>
+        <br>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
   </div>
