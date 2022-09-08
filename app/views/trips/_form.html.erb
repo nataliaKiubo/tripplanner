@@ -3,29 +3,34 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="individual_stop wrapper-div border-bottom pb-3 mb-3">
+    <div class="info_stop container">
     <%= f.input :name, placeholder:"Name your trip", required: false %>
-    <%= f.input :description, placeholder:"Write a short overview of your trip: how to get around, tips or tricks", required: false %>
+    <%= f.input :description, placeholder:"Short overview of your trip: how to get around, tips or tricks", required: false %>
     <%= f.input :categories, selected:"Select", label: "Category", :collection => ["Select a category", "Culture", "Shopping", "Food", "Nature", "Leisure", "Sport"],  placeholder:"Select one category", required: false %>
     <%= f.input :amount_of_travellers, collection: 0..10,selected: 0, required: false %>
     <%= f.input :amount_of_children, collection: 0..10, selected: 0, required: false, prompt: "Select your age" %>
     <%= f.input :pets, label: "Bringing any furry friends along?", as: :radio_buttons, collection:['No', 'Yes'] %>
-    <%# <%= f.input :original_trip_id, :as => :hidden %>
     <%= f.input :main_image, as: :file, required: false, label: "Select a photo" %>
+    </div>
   </div>
 
-  <strong><h4>Adding your stops</h4></strong>
+  <strong><h2>Adding your stops</h2></strong>
     <% i = 1 %>
     <div id="stops">
       <%= f.simple_fields_for :stops do |stop| %>
-      <h2>Day <%= i%></h2>
+      <%# <h2>Day <%= i</h2> %>
         <%= render "stop_fields", form: stop %>
       <% i = 1 %>
       <% end %>
-      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
+      <%# <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
     </div>
 
+
   <div class="form-actions">
+      <%= link_to_add_nested(f, :stops, '#stops', link_classes: 'btn btn-primary') %>
+  </div>
+  <div class="form-actions pt-3">
       <%= f.button :submit, class: "btn btn-primary" %>
-    </div>
+  </div>
 <% end %>
