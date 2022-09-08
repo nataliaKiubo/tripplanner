@@ -29,5 +29,14 @@ li {
 }
 
 .fixed-bottom {
-  background-color: #fff;
+  background-color: #e61a23;
+  padding: 8px 0;
+
+  a {
+    color: #ffffff !important;
+  }
+
+  .fa-heart {
+    color: #ffffff;
+  }
 }
