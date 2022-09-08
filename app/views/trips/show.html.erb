@@ -23,7 +23,7 @@
 
   <div class="container">
 
-    <div class="card-category">
+    <div class="card-category trip-card-image">
       <% if user_signed_in? %>
         <% if current_user.favorited?(@trip) %>
           <%= button_to toggle_favorite_trip_path(@trip), method: :post, class: "icon-heart"  do %>

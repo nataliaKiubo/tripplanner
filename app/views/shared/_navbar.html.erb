@@ -1,35 +1,14 @@
-<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon ps-3 pe-3">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1662456008/Tripplanner-Logo-SQUARE_pjp8hr.jpg" %>
     <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-
-          <li class="nav-item dropdown">
-            <% if current_user.avatar.key == nil %>
-              <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1661437338/001-user_vutg9d.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= cl_image_tag current_user.avatar.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+      <% if user_signed_in? %>
+        <div>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}%>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to "Login", new_user_session_path %>
+        </div>
+      <% end %>
 </div>

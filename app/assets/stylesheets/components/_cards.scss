@@ -50,7 +50,7 @@
 }
 
 .fa {
-  color: black;
+  color: #333333;
 }
 
 .card-image {
@@ -83,6 +83,14 @@ p {
   padding: 0;
   border-radius: 4px;
   height: auto;
+
+  .fa-heart {
+    color: #e61a23;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 20px;
+  }
 }
 
 .card-grid {
@@ -91,6 +99,17 @@ p {
 
 .big-container {
   position: relative;
+}
+
+.trip-card-image {
+
+  .fa-heart {
+    color: #e61a23;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 20px;
+  }
 }
 
 
