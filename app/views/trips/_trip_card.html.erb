@@ -1,5 +1,5 @@
   <div class="card-category">
-
+    <div class="position-relative">
     <% if user_signed_in? %>
       <% if current_user.favorited?(trip) %>
         <%= button_to toggle_favorite_trip_path(trip), method: :post, class: "icon-heart"  do %>
@@ -23,17 +23,18 @@
     <% else %>
       <img class="card-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg" alt="backup_image">
     <% end %>
-    <div class="card-description">
-      <%= link_to user_path(trip.user) do %>
-        <div class="avatar-on-card">
-          <% if trip.user.avatar.key == nil %>
-            <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1662470428/tripplanner-avatar_vh1ooe.jpg", class: "card-avatar" %>
-          <% else %>
-            <%= cl_image_tag trip.user.avatar.key, crop: :fill, class: "card-avatar" %>
-          <% end %>
-        </div>
-      <% end %>
 
+      <div class="avatar-on-card">
+        <% if trip.user.avatar.key == nil %>
+          <%= image_tag "https://res.cloudinary.com/ddxqnyga2/image/upload/v1662470428/tripplanner-avatar_vh1ooe.jpg", class: "card-avatar" %>
+        <% else %>
+          <%= cl_image_tag trip.user.avatar.key, crop: :fill, class: "card-avatar" %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="card-description">
       <div class="card-name d-flex flex-column">
         <%= trip.name %>
       </div>
