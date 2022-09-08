@@ -1,18 +1,17 @@
-<%= simple_form_for [@trip, @stop] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= simple_form_for [@trip, @stop] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :date, html5: true %>
-    <%= f.input :name %>
-    <%= f.input :address,
-    input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
-  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-    <%= f.input :description %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :date, html5: true %>
+      <%= f.input :name %>
+      <%= f.input :address,
+      input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+      <%= f.input :description %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  <% end %>
