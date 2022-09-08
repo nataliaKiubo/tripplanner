@@ -1,8 +1,14 @@
 <div class="container">
   <div class="container"><%= render "trips/searchform_trips" %></div>
-<p style="color: green"><%= notice %></p>
-
-  <h1>Trips</h1>
+  <p style="color: green"><%= notice %></p>
+  <div class="d-flex align-items-center">
+    <% if params[:query].present? %>
+      <h1 style="margin-bottom: 0; margin-right: 8px;">Trips to <%= params[:query] %></h1>
+       <p>(<%= @trips.count %>)</p>
+    <% else %>
+      <h1>Trips for you</h1>
+    <% end %>
+  </div>
   <div id="trips" class="cards">
     <% @trips.each do |trip| %>
       <div class="card-envolve">
