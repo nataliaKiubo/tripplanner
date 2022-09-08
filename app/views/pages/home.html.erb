@@ -63,10 +63,16 @@
 </div>
 
 <div class="container">
+  <h2>Popular Users</h2>
+  <p>Find the most popular planners:</p>
+  <%= render "users/usercards" %>
+</div>
+
+<div class="container">
   <h2>Your Trips</h2>
   <% if user_signed_in? %>
-    <%= link_to "Start planning", new_trip_path, class: "btn btn-primary"  %>
+    <%= link_to "Start planning", new_trip_path, class: "btn btn-primary mb-3"  %>
   <% else %>
-  <%= link_to "Start planning",  new_user_session_path, class: "btn btn-primary" %>
+  <%= link_to "Start planning",  new_user_session_path, class: "btn btn-primary mb-3" %>
   <% end %>
 </div>

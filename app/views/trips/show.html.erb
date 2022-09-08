@@ -1,5 +1,4 @@
 <div>
-
   <div class="trips-links container sticky-top">
     <div class="position-absolute">
       <a href="whatsapp://send?text=<%= request.original_url %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
@@ -23,7 +22,6 @@
   </div>
 
   <div class="container">
-    <p style="color: green"><%= notice %></p>
 
     <div class="card-category">
       <% if user_signed_in? %>
@@ -62,7 +60,7 @@
 
       <div class="d-flex justify-content-between mb-3 mt-3">
         <%# <%="⭐" * Review.average_rating(@trip)%>
-        <p>⭐ <%= Review.average_rating(@trip) %> Ø rating</p>
+        <p>⭐ <%= Review.average_rating(@trip).round(2) %> Ø rating</p>
 
         <p><i class="fa-solid fa-heart"></i>
           <% if @trip.favorited.count == 1%>

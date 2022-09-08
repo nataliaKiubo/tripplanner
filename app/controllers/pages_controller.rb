@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @trips = Trip.last(6)
+    @users = User.last(4)
   end
 end

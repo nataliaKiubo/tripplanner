@@ -4,3 +4,32 @@
 // body {
 //   background-image: url(https://res.cloudinary.com/ddxqnyga2/image/upload/v1662468916/BG-tripplanner_z6iwlj.jpg);
 // }
+
+
+.usercolumn {
+  max-width: 46%;
+  margin: 2%;
+  background: white;
+  padding: 16px;
+  box-shadow: 1px 4px 6px #8080808c;
+  border-radius: 4px;
+  gap: 15px;
+
+  h6 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .width_100 {
+    font-size: 14px;
+  }
+}
+
+
+#users {
+
+  .user-avatar {
+
+    width: 56px;
+  }
+}
