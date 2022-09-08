@@ -101,6 +101,17 @@ p {
   position: relative;
 }
 
+.trip-card-image {
+
+  .fa-heart {
+    color: #e61a23;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 20px;
+  }
+}
+
 
 // Devices Configurations
 // Smallest device
